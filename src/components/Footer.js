@@ -16,7 +16,7 @@ export default function Footer() {
         <li><a href='#'>Products</a></li>
        </ul>
       {/*  <p>Comfoody</p> */}
-       <p className='w-full text-center xl:w-fit'>Copyright &copy;2023 <br/> All Rights Reserved</p>
+       <p className='w-full text-center xl:w-fit'>&copy;2023 | All Rights Reserved</p>
     </footer>
   )
 }
