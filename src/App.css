@@ -174,7 +174,8 @@ body .grid-wrapper {
 }
 
 body .features-section {
-  height: var(--featuresConHeight);
+  height: var(--featuresConHeight);   
+  margin-top: -.1em;
 }
 
 .features-section > div:nth-child(1) {
