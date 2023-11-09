@@ -13,7 +13,7 @@ export default function HeroSection() {
         </div>
        
        <section className='text-brown relative'>
-        <div className="hero-text-section relative flex flex-col gap-4 items-center w-full md:items-start  lg:w-11/12 xl:w-4/5">
+        <div className="mt-7 hero-text-section relative flex flex-col gap-4 items-center w-full md:items-start  lg:w-11/12 xl:w-4/5">
           <h1 className='main-text text-center overflow-hidden text-5xl font-semibold sm:text-7xl md:text-left md:text-7xl xl:text-8xl'><p>From Our</p> <p>Oven to Your</p> <p>Heart.</p></h1>
           <p className='text-black text-xl xl:text-2xl'>Elevate Your Taste Experience!</p>
           <button className='startBtn relative mt-5 p-3 rounded-full px-6 ml-1 xl:text-xl'>Explore menu</button>
