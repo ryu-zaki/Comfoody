@@ -13,13 +13,13 @@ export default function HeroSection() {
         </div>
        
        <section className='text-brown relative'>
-        <div className="relative flex flex-col gap-4 items-start w-80 sm:w-96 lg:w-11/12 xl:w-4/5">
-          <h1 className='main-text overflow-hidden text-5xl font-semibold sm:text-6xl md:text-7xl xl:text-8xl'><p>From Our</p> <p>Oven to Your</p> <p>Heart.</p></h1>
+        <div className="hero-text-section relative flex flex-col gap-4 items-center w-full md:items-start  lg:w-11/12 xl:w-4/5">
+          <h1 className='main-text text-center overflow-hidden text-5xl font-semibold sm:text-7xl md:text-left md:text-7xl xl:text-8xl'><p>From Our</p> <p>Oven to Your</p> <p>Heart.</p></h1>
           <p className='text-black text-xl xl:text-2xl'>Elevate Your Taste Experience!</p>
           <button className='startBtn relative mt-5 p-3 rounded-full px-6 ml-1 xl:text-xl'>Explore menu</button>
         </div>
 
-        <div className='cookie-bg  absolute top-0 right-0 -z-10 md:-top-20 lg:z-10'>
+        <div className='cookie-bg hidden absolute top-0 right-0 -z-10 md:block md:-top-20 lg:z-10'>
           <img draggable="false" className='w-full h-full opacity-60 md:opacity-100' src='./assets/cookie-bg.png' alt=''/>
         </div>
        </section>
