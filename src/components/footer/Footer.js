@@ -12,7 +12,7 @@ export default function Footer() {
 
        <ul className='flex gap-5 xl:gap-10'>
         <li><a href='#'>Home</a></li>
-        <li><a href='#'>About Us</a></li>
+        <li><a href='#'>Contacts</a></li>
         <li><a href='#'>Products</a></li>
        </ul>
       {/*  <p>Comfoody</p> */}

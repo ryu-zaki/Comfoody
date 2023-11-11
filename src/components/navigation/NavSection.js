@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function NavSection({setMenuVisible}) {
+export default function NavSection({setMenuVisible, setActivePage}) {
   return (
     <header className='text-brown flex justify-between items-center z-20 p-5 py-7 pb-0 sm:p-7  md:p-10 xl:px-24'>
         <div className='flex items-center gap-2'>
@@ -19,9 +19,9 @@ export default function NavSection({setMenuVisible}) {
         <div className='hidden md:block'>
 
           <ul className='menu-list flex gap-8 items-center'>
-             <li className='cursor-pointer relative'>Home</li>
-             <li className='cursor-pointer relative'>About us</li>
-             <li className='cursor-pointer relative'>Products</li>
+             <li onClick={(e) => setActivePage(e.target.innerText)} className='cursor-pointer relative'>Home</li>
+             <li onClick={(e) => setActivePage(e.target.innerText)} className='cursor-pointer relative'>Contacts</li>
+             <li onClick={(e) => setActivePage(e.target.innerText)} className='cursor-pointer relative'>Products</li>
           </ul>
         </div>
 

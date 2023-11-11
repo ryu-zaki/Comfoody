@@ -13,7 +13,7 @@ export default function MenuList({setMenuVisible}) {
         </div>
       <ul className='flex flex-col gap-12 text-2xl items-center text-black'>
         <li>Home</li>
-        <li>About us</li>
+        <li>Contacts</li>
         <li>Products</li>
         <li>Login</li>
         <li>Register</li>

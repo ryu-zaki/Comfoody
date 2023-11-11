@@ -21,6 +21,8 @@ module.exports = {
       // => @media (min-width: 1350px) { ... }
     },
     colors: {
+      'darkBlue': '#020826',
+      'lightBrown': '#8c7851',
       'brown': "#4E3B34",
       'orange': '#C64800',
       'bgOrange': 'rgb(254,247,221)',
