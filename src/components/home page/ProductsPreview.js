@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductsCard from './ProductsCard'
-import data from '../data/BestSellers'
+import data from '../../data/BestSellers'
 
 export default function ProductsPreview() {
 

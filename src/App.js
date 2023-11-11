@@ -1,8 +1,10 @@
 import './App.css';
 import React from 'react';
-import NavSection from './components/NavSection'
-import MenuList from './components/MenuList';
-import HomeSection from './components/HomeSection';
+import NavSection from './components/navigation/NavSection'
+import MenuList from './components/navigation/MenuList';
+import HomeSection from './components/home page/HomeSection';
+import AboutUsSection from './components/about us page/AboutUsSection';
+
 
 function App() {
   const [menuVisible, setMenuVisible] = React.useState(false);
@@ -11,6 +13,7 @@ function App() {
       <NavSection setMenuVisible={setMenuVisible}/>
       <HomeSection setMenuVisible={setMenuVisible} />
       {menuVisible && <MenuList setMenuVisible={setMenuVisible}/>}
+    {/*   <AboutUsSection /> */}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import ProductsPreview from './ProductsPreview';
 import ParallaxSection from './ParallaxSection';
-import Footer from './Footer';
+import Footer from '../footer/Footer';
 
 
 export default function HomeSection({setMenuVisible}) {
