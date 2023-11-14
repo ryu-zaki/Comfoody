@@ -390,16 +390,19 @@ body .nav-cookie-bg {
   transform: translateY(50%);
 }
 
-.products-section .pro-introduction > div {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.products-section .menu-title::before {
+  content: '';
+  position: absolute;
+  background-color: var(--brown);
+  width: 75%;
+  height: 1.5em;
+  z-index: -1;
+  opacity: 1;
+  top: 50%;
 
+  border-radius: 5em;
+  transform: translateX(50%) translateY(-50%);
 }
-
-.products-section .pro-introduction > div img {
-  transform: translateY(-3em);
-  border-radius: 1em;
-}
-
 
 @media (min-width: 400px) {
   :root {
