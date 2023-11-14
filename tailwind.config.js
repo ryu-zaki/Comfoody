@@ -28,7 +28,7 @@ module.exports = {
       'bgOrange': 'rgb(254,247,221)',
       "lightGreen": "#D9E1D4",
       "green": "#08A88A",
-      "grayBg": "#f4f4f4",
+      "grayBg": "#ddd",
       "white": "#fff",
       "black": "#333",
       "yellow": "#F7C25B"

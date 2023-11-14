@@ -5,6 +5,7 @@ import MenuList from './components/navigation/MenuList';
 import HomeSection from './components/home page/HomeSection';
 import AboutUsSection from './components/about us page/AboutUsSection';
 import Footer from './components/footer/Footer';
+import ProductsSection from './components/products section/ProductsSection';
 
 
 function App() {
@@ -16,15 +17,16 @@ function App() {
   let currentPage; 
   switch(activePage.toLocaleLowerCase()) {
     case "home": 
-      currentPage = <HomeSection />;
+      /* currentPage = <HomeSection />; */
+      currentPage = <ProductsSection />;
     break;
 
     case "contacts": 
     currentPage = <AboutUsSection />;
     break;
 
-    case "home": 
-    currentPage = <AboutUsSection />;
+    case "products": 
+    currentPage = <ProductsSection />;
     break;
 
   }
