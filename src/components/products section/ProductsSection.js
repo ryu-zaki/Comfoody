@@ -1,7 +1,18 @@
 import React from 'react'
+import IntroProductCard from './IntroProductCard'
+import menu from './ProductsMenu'
 
 export default function ProductsSection() {
 
+  const introList = menu.introProducts.map(({Title, Price, OldPrice, ImgSrc}, index) => {
+    return <IntroProductCard 
+                key={index} 
+                Title={Title}
+                Price={Price}
+                OldPrice={OldPrice}
+                ImgSrc={ImgSrc}
+                />
+  });
 
   return (
     <div className='products-section flex flex-col gap-36'>
@@ -15,34 +26,9 @@ export default function ProductsSection() {
         </div>
         
         <div className='pro-introduction flex gap-2 px-2'> 
-            <div className='bg-brown w-1/2 flex flex-col items-center rounded-lg relative h-60 justify-end gap-3'>
-              <div className='w-10/12 h-auto absolute top-0'>
-                <img className='h-full w-full' src='./assets/Products Section/proIntro-1.png' alt=''/>
-              </div>
-              <h3 className='text-white text-xl'>Simores Brownie</h3>
-              <div className='text-white flex gap-2'>
-                <p className='text-sm'><s>$15.00</s></p>
-                <h3 className='text-yellow'>$10.00</h3>
-
-              </div>
-
-              <button className='bg-white w-full p-3 rounded-br-lg rounded-bl-lg'>Order now</button>
-            </div>
-
-
-            <div className='bg-brown w-1/2 flex flex-col items-center rounded-lg relative h-60 justify-end gap-3'>
-              <div className='w-10/12 h-auto absolute top-0'>
-                <img className='h-full w-full' src='./assets/Products Section/proIntro-1.png' alt=''/>
-              </div>
-              <h3 className='text-white text-xl'>Simores Brownie</h3>
-              <div className='text-white flex gap-2'>
-                <p className='text-sm'><s>$15.00</s></p>
-                <h3 className='text-yellow'>$10.00</h3>
-
-              </div>
-
-              <button className='bg-white w-full p-3 rounded-br-lg rounded-bl-lg'>Order now</button>
-            </div>
+            {
+              introList
+            }
         </div>
        
       
