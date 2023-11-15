@@ -33,7 +33,8 @@ module.exports = {
       "white": "#fff",
       "black": "#333",
       "yellow": "#F7C25B",
-      "dark": "#222"
+      "dark": "#222",
+      "tWhite": "#eee"
     },
     extend: {},
   },

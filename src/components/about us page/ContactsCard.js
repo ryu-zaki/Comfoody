@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function ContactsCard({src, accs, title}) {
 
-  const listAccs = accs.map(acc => {
-    return <li className='text-lightBrown'><b>{acc}</b></li>
+  const listAccs = accs.map((acc, index) => {
+    return <li key={index} className='text-lightBrown'><b>{acc}</b></li>
   });
 
   return (

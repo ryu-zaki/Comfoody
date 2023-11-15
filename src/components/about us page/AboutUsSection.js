@@ -3,7 +3,7 @@ import ContactsCard from './ContactsCard'
 export default function AboutUsSection() {
 
   return (
-    <div className='about-us-section flex flex-col gap-16 xl:mt-16'>
+    <div className='about-us-section flex flex-col gap-16 my-20 m xl:mt-16'>
       
       <div className='contacts-section md:mb-20 xl:mb-36'>
         <h2 className='text-5xl overflow-hidden text-center font-semibold text-brown sm:text-6xl md:text-7xl xl:text-8xl'><div>Get in Touch</div></h2>

@@ -12,6 +12,11 @@
 
   --gridWrapperHeight: 84em;
   --contactSectionHeight: 25em;
+
+  --productsIntroBgHeight: 30em;
+
+  --allProWidth: 10em;
+  --allProHeight: 10em;
 }
 
 body {
@@ -52,12 +57,16 @@ body .hero-section {
   cursor: pointer;
 }
 
-.bar1, .bar2, .bar3 {
+.menu-con .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #4E3B34;
+  background-color: var(--brown);
   margin: 6px 0;
   transition: 0.4s;
+}
+
+.menu-con .bar1.mobile, .bar2.mobile, .bar3.mobile {
+  background-color: #eee;
 }
 
 .change .bar1 {
@@ -121,10 +130,29 @@ body .hero-section {
   
 }
 
+body .menuList-con::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(0,0,0,0.7);
+  inset: 0;
+  height: 100%;
+  z-index: 20;
+  width: 100%;
+}
+
 .menuList-con ul li {
   transform: translateY(-.8em);
   opacity: 0;
   animation: menuItems 1s forwards;
+}
+
+.menuList-con ul li::before {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: var(--yellow);
+  bottom: -.2em;
 }
 
 .menuList-con ul li:nth-child(2) {
@@ -371,7 +399,7 @@ body .nav-cookie-bg {
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
-   min-height: 30em;
+   min-height: var(--productsIntroBgHeight);
    position: relative;
 }
 
@@ -419,29 +447,23 @@ html body .products-section .all-products {
 
 }
 
-.products-section .all-products .grid-section {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: .6em;
-  row-gap: 4em;
-}
 
 .products-section .all-products .grid-section > section {
  
-  width: 100%;
+  width: var(--allProWidth);
   
 }
 
 .products-section .all-products .grid-section > section > div {
   background-color: gray;
-  height: 10em;
+  min-height: var(--allProHeight);
 }
 
 .products-section .all-products .grid-section section div::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.3);
   z-index: 1;
 }
 
@@ -458,14 +480,20 @@ html body .products-section .all-products {
 
 .products-section .all-products .grid-section > section > div:hover .bg-img {
   transform: scale(1.1);
-  
+}
 
-
+.products-section .all-products .grid-section > section button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+ 
 }
 
 @media (min-width: 400px) {
   :root {
     --gridWrapperHeight: 75em;
+
+    --allProWidth: 11em;
+    --allProHeight: 11em;
   }
 }
 
@@ -485,7 +513,9 @@ html body .products-section .all-products {
     --imgBgHeight: 40em;
     --bgHeight: 100px;
     --gridWrapperHeight: 84em;
-    
+    --allProWidth: 15em;
+    --allProHeight: 15em;
+
   }
 
   
@@ -540,9 +570,13 @@ html body .products-section .all-products {
     --imgBgWidth: 45em;
     --imgBgHeight: 45em;
 
-  --featuresConHeight: 35em;
-  --gridWrapperHeight: 48em;
+     --featuresConHeight: 35em;
+     --gridWrapperHeight: 48em;
+   
+     --productsIntroBgHeight: 90vh;
 
+     --allProWidth: 18em;
+     --allProHeight: 18em;
   }
 
   body .preview-flex {
@@ -571,6 +605,15 @@ html body .products-section .all-products {
 
   }
 
+  .products-section .products-header {
+   /*  border: 2px solid #eee; */
+    padding: 2em;
+   /*  width: 50em; */
+  }
+
+  .products-section .pro-introduction {
+    width: 55em;
+  }
 
 
 }

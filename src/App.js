@@ -35,7 +35,7 @@ function App() {
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
       <NavSection setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>
       {currentPage}
-      {menuVisible && <MenuList setMenuVisible={setMenuVisible}/>}
+      {menuVisible && <MenuList setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
       
       <Footer />
     </div>

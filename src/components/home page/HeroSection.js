@@ -12,7 +12,7 @@ export default function HeroSection() {
          </svg>
         </div>
        
-       <section className='text-brown relative'>
+       <section className='text-brown relative mt-20 sm:mt-0'>
         <div className="mt-7 hero-text-section relative flex flex-col gap-4 items-center w-full md:items-start  lg:w-11/12 xl:w-4/5 xl:mt-0">
           <h1 className='main-text text-center overflow-hidden text-5xl font-semibold sm:text-7xl md:text-left md:text-7xl xl:text-8xl'><p>From Our</p> <p>Oven to Your</p> <p>Heart.</p></h1>
           <p className='text-black text-xl xl:text-2xl'>Elevate Your Taste Experience!</p>
