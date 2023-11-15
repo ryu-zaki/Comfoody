@@ -32,7 +32,8 @@ module.exports = {
       "grayBg": "#ddd",
       "white": "#fff",
       "black": "#333",
-      "yellow": "#F7C25B"
+      "yellow": "#F7C25B",
+      "dark": "#222"
     },
     extend: {},
   },

@@ -14,8 +14,8 @@ export default function IntroProductCard({Title, Price, OldPrice, ImgSrc}) {
       </div>
       <h2 className='text-center text-lg'>{Title}</h2>
       <div className='flex gap-2'>
-        <span className='text-sm'><s>{Price}</s></span>
-        <p>{OldPrice}</p>
+        <span className='text-sm'><s>{OldPrice}</s></span>
+        <p>{Price}</p>
       </div>
       <button className='text-white bg-brown w-9/12 p-2 rounded-full mt-3'>Order now</button>
     </div>

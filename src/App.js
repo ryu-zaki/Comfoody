@@ -17,8 +17,8 @@ function App() {
   let currentPage; 
   switch(activePage.toLocaleLowerCase()) {
     case "home": 
-      /* currentPage = <HomeSection />; */
-      currentPage = <ProductsSection />;
+      currentPage = <HomeSection />;
+      /* currentPage = <ProductsSection />; */
     break;
 
     case "contacts": 
@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <div className='main-wrapper pb-0 flex flex-col gap-20 sm:gap-14 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
+    <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
       <NavSection setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>
       {currentPage}
       {menuVisible && <MenuList setMenuVisible={setMenuVisible}/>}

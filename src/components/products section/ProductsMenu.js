@@ -16,7 +16,46 @@ const menu = {
 
 
   ],
+ AllProducts: [
+  {
+    Title: "Choco Chip",
+    ImgSrc: "choco-chip.png",
+  },
 
+  {
+    Title: "Choco Crinkles",
+    ImgSrc: "crinkles.png",
+  },
+
+  {
+    Title: "Choco Brownies",
+    ImgSrc: "choco-brownies.png",
+  },
+
+  {
+    Title: "Red Velvet",
+    ImgSrc: "red-velvet.png",
+  },
+  {
+    Title: "Choco Chip",
+    ImgSrc: "choco-chip.png",
+  },
+
+  {
+    Title: "Choco Crinkles",
+    ImgSrc: "crinkles.png",
+  },
+
+  {
+    Title: "Choco Brownies",
+    ImgSrc: "choco-brownies.png",
+  },
+
+  {
+    Title: "Red Velvet",
+    ImgSrc: "red-velvet.png",
+  }
+ ]
 }
 
 export default menu;

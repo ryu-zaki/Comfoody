@@ -404,6 +404,65 @@ body .nav-cookie-bg {
   transform: translateX(50%) translateY(-50%);
 }
 
+html body .products-section .all-products {
+  height: auto;
+}
+
+.products-section .all-products .subTitle::before {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  bottom: -.2em;
+  background-color: var(--yellow);
+
+}
+
+.products-section .all-products .grid-section {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: .6em;
+  row-gap: 4em;
+}
+
+.products-section .all-products .grid-section > section {
+ 
+  width: 100%;
+  
+}
+
+.products-section .all-products .grid-section > section > div {
+  background-color: gray;
+  height: 10em;
+}
+
+.products-section .all-products .grid-section section div::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.all-products .grid-section  section  button {
+  transform: translate(-50%, -50%);
+  border: 1px solid white;
+ text-wrap: nowrap;
+ 
+}
+
+.products-section .all-products .grid-section > section > div .bg-img{
+  transition: all .5s;
+}
+
+.products-section .all-products .grid-section > section > div:hover .bg-img {
+  transform: scale(1.1);
+  
+
+
+}
+
 @media (min-width: 400px) {
   :root {
     --gridWrapperHeight: 75em;
