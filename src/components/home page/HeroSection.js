@@ -15,8 +15,8 @@ export default function HeroSection() {
        <section className='text-brown relative mt-20 sm:mt-0'>
         <div className="mt-7 hero-text-section relative flex flex-col gap-4 items-center w-full md:items-start  lg:w-11/12 xl:w-4/5 xl:mt-0">
           <h1 className='main-text text-center overflow-hidden text-5xl font-semibold sm:text-7xl md:text-left md:text-7xl xl:text-8xl'><p>From Our</p> <p>Oven to Your</p> <p>Heart.</p></h1>
-          <p className='text-black text-xl xl:text-2xl'>Elevate Your Taste Experience!</p>
-          <button className='startBtn relative mt-5 p-3 rounded-full px-6 ml-1 xl:text-xl'>Explore menu</button>
+          <p className='text-black mt-3 text-xl xl:text-2xl'>Elevate Your <span className='relative z-10 text-brown ml-4'>Taste Experience!</span></p>
+          <button className='startBtn z-20 relative mt-7 p-3 rounded-full px-6 ml-1 xl:text-xl'>Explore menu</button>
         </div>
 
         <div className='cookie-bg hidden absolute top-0 right-0 -z-10 md:block md:-top-20 lg:z-10'>

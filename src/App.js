@@ -37,7 +37,7 @@ function App() {
       {currentPage}
       {menuVisible && <MenuList setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
       
-      <Footer />
+      <Footer setActivePage={setActivePage}/>
     </div>
   );
 }

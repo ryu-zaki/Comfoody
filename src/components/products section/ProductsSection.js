@@ -5,6 +5,32 @@ import ProductSecTemplate from './ProductSecTemplate';
 
 export default function ProductsSection() {
 
+  React.useEffect(() => {
+    
+    const menuTitle = document.querySelector(".products-section .menu-title");
+    const introProductsCon = document.querySelector('.products-section .pro-introduction');
+    const subTitle = document.querySelector('.products-section .all-products .subTitle');
+
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        } 
+      })
+    }, {
+      threshold: .6
+    });
+
+    observer.observe(menuTitle);
+    observer.observe(introProductsCon);
+    observer.observe(subTitle);
+
+
+    
+  }, [])
+
+
   const introList = menu.introProducts.map(({Title, Price, OldPrice, ImgSrc}, index) => {
     return <IntroProductCard 
                 key={index} 
