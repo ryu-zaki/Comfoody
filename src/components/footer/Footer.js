@@ -11,9 +11,9 @@ export default function Footer({setActivePage}) {
        </ul>
 
        <ul className='flex gap-5 xl:gap-10'>
-        <li><a onClick={(e) => {setActivePage(e.target.innerText)}} href='#'>Home</a></li>
-        <li><a onClick={(e) => {setActivePage(e.target.innerText)}} href='#'>Contacts</a></li>
-        <li><a onClick={(e) => {setActivePage(e.target.innerText)}} href='#'>Products</a></li>
+        <li><a href="/" onClick={(e) => {setActivePage(e.target.innerText)}}>Home</a></li>
+        <li><a href="/" onClick={(e) => {setActivePage(e.target.innerText)}}>Contacts</a></li>
+        <li><a href="/" onClick={(e) => {setActivePage(e.target.innerText)}} >Products</a></li>
        </ul>
       {/*  <p>Comfoody</p> */}
        <p className='w-full text-center xl:w-fit'>&copy;2023 | All Rights Reserved</p>

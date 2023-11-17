@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MenuList({setMenuVisible, setActivePage}) {
+export default function MenuList({setMenuVisible, setActivePage, setLogRegVisibility}) {
 
   const navEvent = (e) => {
     setActivePage(e.target.innerText); 
@@ -22,8 +22,8 @@ export default function MenuList({setMenuVisible, setActivePage}) {
         <li onClick={navEvent} className='cursor-pointer relative'>Home</li>
         <li onClick={navEvent} className='cursor-pointer relative'>Contacts</li>
         <li onClick={navEvent} className='cursor-pointer relative'>Products</li>
-        <li onClick={navEvent} className='cursor-pointer relative'>Login</li>
-        <li onClick={navEvent} className='cursor-pointer relative'>Register</li>
+        <li onClick={(e) => {navEvent(e); setLogRegVisibility(true)}} className='cursor-pointer relative'>Login</li>
+        <li onClick={(e) => {navEvent(e); setLogRegVisibility(true)}} className='cursor-pointer relative'>Register</li>
       </ul>
     </div>
   )

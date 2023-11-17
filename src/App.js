@@ -2,10 +2,9 @@ import './App.css';
 import React from 'react';
 import NavSection from './components/navigation/NavSection'
 import MenuList from './components/navigation/MenuList';
-import HomeSection from './components/home page/HomeSection';
-import AboutUsSection from './components/about us page/AboutUsSection';
 import Footer from './components/footer/Footer';
-import ProductsSection from './components/products section/ProductsSection';
+import CurrentPage from './CurrentPage';
+import LogRegCon from './components/login-register/container';
 
 
 function App() {
@@ -14,30 +13,26 @@ function App() {
 
   const [activePage, setActivePage] = React.useState("home");
 
-  let currentPage; 
-  switch(activePage.toLocaleLowerCase()) {
-    case "home": 
-      currentPage = <HomeSection />;
-      /* currentPage = <ProductsSection />; */
-    break;
-
-    case "contacts": 
-    currentPage = <AboutUsSection />;
-    break;
-
-    case "products": 
-    currentPage = <ProductsSection />;
-    break;
-
-  }
+  /* Login & Register System page Visibility*/
+  const [logRegVisibility, setLogRegVisibility] = React.useState(false);
 
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
-      <NavSection setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>
-      {currentPage}
-      {menuVisible && <MenuList setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
+      {
+        logRegVisibility ? 
+        <LogRegCon /> :
+        ( 
+          <>
+           <NavSection setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>
+            <CurrentPage activePage={activePage}/>
+             {menuVisible && <MenuList setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
       
-      <Footer setActivePage={setActivePage}/>
+            <Footer setActivePage={setActivePage}/>
+          </>
+        ) 
+      }
+
+      
     </div>
   );
 }

@@ -561,6 +561,85 @@ html body .products-section .all-products > h2.active {
   transform: translate(0,0);
   opacity: 1;
 }
+
+.custom-shape-divider-bottom-1700143696 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1700143696 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 172px;
+}
+
+.custom-shape-divider-bottom-1700143696 .shape-fill {
+  fill: #4E3B34;
+}
+
+.logreg-con .logreg-card {
+  height: 32em;
+  z-index: 99;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ 
+}
+
+.logreg-con.switch .logreg-card > * {
+  transform: translateX(-100%);
+}
+
+.logreg-con.switch .logreg-card > *:first-child {
+  opacity: 0;
+}
+
+.logreg-con .logreg-card > *:last-child {
+  opacity: 0;
+}
+
+.logreg-con.switch .logreg-card > *:last-child {
+  opacity: 1;
+
+}
+
+.logreg-con .logreg-card > * {
+  min-width: 100%;
+  transition: all .7s;
+}
+
+.logreg-con .logreg-card > *.deac {
+  opacity: 0;
+}
+
+.input-box-con > div {
+  border: 1px solid #666;
+}
+ 
+.input-box-con > div input {
+  outline: 0;
+  border: 0;
+}
+
+.input-box-con > div label {
+  color: #777;
+  transition: all .2s;
+}
+
+.input-box-con > div input:focus ~ label,
+.input-box-con > div input:valid ~ label {
+  top: -2em;
+  font-size: .8em;
+  font-weight: bold;
+  color: #333;
+  background-color: white;
+}
+
+
 @keyframes proIntroTitle {
   to {
     opacity: 1;
