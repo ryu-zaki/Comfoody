@@ -32,9 +32,30 @@ export default function Container() {
     </svg>
 </div>
       
-      <div className='logreg-card w-11/12 bg-white rounded-lg flex overflow-hidden'>
+      <div className='logreg-card w-11/12 bg-white rounded-lg flex overflow-hidden relative'>
+        
         <LoginCard showPass={showPass} setLogSwitch={setLogSwitch}/>
         <RegisterCard showPass={showPass}  setLogSwitch={setLogSwitch}/>
+        <div className='bg-brown w-1/2 h-full absolute z-30 brown-section hidden lg:block overflow-hidden'>
+        <div className='w-full h-full text-white absolute sign-in-text z-30 hidden lg:flex flex-col items-center justify-center left-0 px-10'>
+          <h1 className='text-4xl font-bold'>Welcome Back!</h1>
+          <p className='text-center mt-3'>Enter your personal details to use all our features</p>
+          <button onClick={() => setLogSwitch(false)} className='text-sm uppercase text-white p-2 px-8 rounded-md border-solid border-2 border-white mt-7 hover:bg-white hover:text-brown hover:font-semibold'>Sign in</button>
+        </div>
+
+        <div className='w-full h-full text-white absolute register-text z-30 hidden lg:flex flex-col items-center justify-center right-0  px-10'>
+        <h1 className='text-4xl font-bold'>Join us!</h1>
+          <p className='text-center mt-3'>Register your personal details to use all our features</p>
+          <button onClick={() => setLogSwitch(true)} className='text-sm uppercase text-white p-2 px-8 rounded-md border-solid border-2 border-white mt-7 hover:bg-white hover:text-brown hover:font-semibold'>Register</button>
+        </div>
+
+        </div>
+        
+       
+
+        
+        
+       
       </div>
 
     </div>
