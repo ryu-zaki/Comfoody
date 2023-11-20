@@ -16,14 +16,17 @@ function App() {
   /* Login & Register System page Visibility*/
   const [logRegVisibility, setLogRegVisibility] = React.useState(false);
 
+
+  const [logSwitch, setLogSwitch] = React.useState(false);
+
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
       {
         logRegVisibility ? 
-        <LogRegCon /> :
+        <LogRegCon setActivePage={setActivePage} setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
         ( 
           <>
-           <NavSection setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>
+           <NavSection setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
             <CurrentPage activePage={activePage}/>
              {menuVisible && <MenuList setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
       

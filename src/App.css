@@ -587,7 +587,7 @@ html body .products-section .all-products > h2.active {
 
 .logreg-con .logreg-card {
   height: 32em;
-  z-index: 99;
+  z-index: 20;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  
 }
@@ -615,6 +615,31 @@ html body .products-section .all-products > h2.active {
   transform: translateX(-100%);
 
 
+}
+
+.logreg-con  .navigation {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.logreg-con .navigation-con {
+  transform: translateY(-5em);
+}
+
+.logreg-con .navigation-con.active {
+  transform: translateY(0);
+}
+
+.logreg-con .navigation-con,
+.logreg-con .navigation-con .arrow-down {
+  transition: all .5s;
+
+}
+
+.logreg-con .navigation-con.active .arrow-down {
+  transform: rotate(180deg);
+  background-color: white;
+  border-radius: 50%;
 }
 
 
@@ -869,6 +894,43 @@ html body .products-section .all-products > h2.active {
 
   .products-section .pro-introduction {
     width: 55em;
+  }
+
+  .logreg-con .navigation-con {
+    transform: translateY(0);
+  }
+
+  .logreg-con .navigation > *::before {
+   
+    left: 5.4em;
+    font-size: .85em;
+    position: absolute;
+    color: white;
+    background-color: var(--brown);
+    padding: .5em;
+    border-radius: 1em;
+    transform: translateX(-1em) scale(.4);
+    opacity: 0;
+    transform-origin: top left;
+    transition: all .5s;
+
+  }
+
+  .logreg-con .navigation > *:hover::before {
+    transform: translateX(0) scaleX(1);
+    opacity: 1;
+  }
+
+  .logreg-con .navigation > *:nth-child(1)::before {
+    content: 'home';
+  }
+
+  .logreg-con .navigation > *:nth-child(2)::before {
+    content: 'contacts';
+  }
+
+  .logreg-con .navigation > *:nth-child(3)::before {
+    content: 'products';
   }
 
 

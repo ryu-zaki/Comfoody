@@ -9,7 +9,6 @@ export default function LoginCard({setLogSwitch, showPass}) {
                <li><img className='cursor-pointer' width="35" alt='' src='./assets/fb-icon.png'/></li>
                <li><img className='cursor-pointer' width="35" alt='' src='./assets/instagram-icon.png'/></li>
                <li><img className='cursor-pointer' width="35" alt='' src='./assets/tiktok-icon.png'/></li>
-               
            </ul>
 
            <div className='w-full input-box-con flex flex-col gap-10 items-center mt-2'>

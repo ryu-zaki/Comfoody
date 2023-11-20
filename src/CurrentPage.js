@@ -7,7 +7,7 @@ import ProductsSection from './components/products section/ProductsSection';
 export default function CurrentPage({activePage}) {
 
     let currentPage; 
-  switch(activePage.toLocaleLowerCase()) {
+  switch(activePage.toLowerCase()) {
     case "home": 
       currentPage = <HomeSection />;
       /* currentPage = <ProductsSection />; */

@@ -2,10 +2,9 @@ import React from 'react'
 import LoginCard from './LoginCard'
 import RegisterCard from './RegisterCard';
 
-export default function Container() {
+export default function Container({setActivePage, setLogRegVisibility, setLogSwitch, logSwitch}) {
 
-  const [logSwitch, setLogSwitch] = React.useState(false);
-
+  
 
   const showPass = (e) => {
     
@@ -22,6 +21,16 @@ export default function Container() {
 
   }  
 
+  const mobileNavArrow = ({target}) => {
+    target.parentElement.classList.toggle("active");
+
+  }
+
+  const logRegMenuNav = ({target}) => {
+    setActivePage(target.id);
+    setLogRegVisibility(false);
+  }
+
   return (
     <div className={`logreg-con h-screen flex justify-center items-center ${logSwitch ? "switch" : ""}`}>
        <div class="custom-shape-divider-bottom-1700143696">
@@ -30,6 +39,15 @@ export default function Container() {
         <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
         <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
     </svg>
+</div>
+
+<div className='absolute navigation-con top-2 z-50 flex flex-col items-center gap-3 xl:left-5 xl:top-auto'>
+  <ul className='flex gap-6 navigation p-4 px-6 bg-white rounded-xl xl:flex-col xl:gap-10 xl:py-9'>
+    <li id="home" onClick={logRegMenuNav} className='relative flex justify-center items-center'><img id="home" alt='' className='cursor-pointer xl:w-10' width="30" src='./assets/Login Section/home-icon.png'/></li>
+    <li id="products" onClick={logRegMenuNav} className='relative flex justify-center items-center'><img id="products" alt='' className='cursor-pointer xl:w-10' width="30" src='./assets/Login Section/box-icon.png'/></li>
+    <li id="contacts" onClick={logRegMenuNav} className='relative flex justify-center items-center'><img alt='' id="contacts" className='cursor-pointer xl:w-10' width="30" src='./assets/Login Section/phone-icon.png'/></li>
+  </ul>
+  <img className='arrow-down cursor-pointer px-2 py-1 xl:hidden' onClick={mobileNavArrow} alt="" src='./assets/Login Section/arrow-down.png'/>
 </div>
       
       <div className='logreg-card w-11/12 bg-white rounded-lg flex overflow-hidden relative'>
