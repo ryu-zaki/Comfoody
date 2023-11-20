@@ -68,12 +68,6 @@ export default function Container({setActivePage, setLogRegVisibility, setLogSwi
         </div>
 
         </div>
-        
-       
-
-        
-        
-       
       </div>
 
     </div>

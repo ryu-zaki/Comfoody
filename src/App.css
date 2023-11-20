@@ -149,14 +149,14 @@ body .menuList-con::before {
   animation: menuItems 1s forwards;
 }
 
-.menuList-con ul li::before {
+/* .menuList-con ul li::before {
   content: '';
   position: absolute;
   height: 2px;
   width: 100%;
   background-color: var(--yellow);
   bottom: -.2em;
-}
+} */
 
 .menuList-con ul li:nth-child(2) {
   animation-delay: .2s;
@@ -191,6 +191,19 @@ body .menuList-con::before {
 
 .main-text > p:nth-child(3) {
   animation-delay: .8s;
+}
+
+.hero-text-section > p > span::before {
+  content: '';
+  position: absolute;
+  bottom: -.4em;
+  left: -.6em;
+  background-color: var(--yellow);
+  border-radius: 1em;
+  width: 120%;
+  height: 2em;
+  z-index: -1;
+
 }
 
 
@@ -667,6 +680,33 @@ html body .products-section .all-products > h2.active {
 }
 
 
+.account-auth-section input {
+  border: 1px solid #222;
+  height: 2.5em;
+  padding-inline: .5em;
+  border-radius: .4em;
+  outline: 0;
+}
+
+.account-auth-section input:focus {
+  outline: 2px solid var(--yellow);
+  border-color: var(--yellow);
+}
+
+.summary-section .product {
+  border-bottom: 2px solid #222;
+  padding-bottom: 1em;
+
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: .7em;
+}
+
+.summary-section button {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
 @keyframes proIntroTitle {
   to {
     opacity: 1;
@@ -697,6 +737,10 @@ html body .products-section .all-products > h2.active {
     :root {
       --imgBgWidth: 37em;
       --imgBgHeight: 37em;
+    }
+
+    .summary-section .product {
+      grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -743,18 +787,7 @@ html body .products-section .all-products > h2.active {
     transform: scaleX(1);
   }
 
-  .hero-text-section > p > span::before {
-    content: '';
-    position: absolute;
-    bottom: -.4em;
-    left: -.6em;
-    background-color: var(--yellow);
-    border-radius: 1em;
-    width: 120%;
-    height: 2em;
-    z-index: -1;
-
-  }
+  
 
 }
 
@@ -842,6 +875,10 @@ html body .products-section .all-products > h2.active {
 
   }
 
+  .summary-section .product {
+    gap: 4em;
+  }
+
   
 }
 
@@ -926,14 +963,33 @@ html body .products-section .all-products > h2.active {
   }
 
   .logreg-con .navigation > *:nth-child(2)::before {
-    content: 'contacts';
-  }
-
-  .logreg-con .navigation > *:nth-child(3)::before {
     content: 'products';
   }
 
+  .logreg-con .navigation > *:nth-child(3)::before {
+    content: 'contacts';
+  }
 
+  .summary-section {
+    width: 35em;
+    
+  }
+
+  .summary-section .product {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (min-width: 1350px) {
+  .summary-section {
+    width: 40em;
+    
+  }
+
+  .summary-section .product {
+    gap: 1.5em;
+  }
 }
 
 @media (min-width: 1550px) {

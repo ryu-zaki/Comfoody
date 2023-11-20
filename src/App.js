@@ -5,6 +5,7 @@ import MenuList from './components/navigation/MenuList';
 import Footer from './components/footer/Footer';
 import CurrentPage from './CurrentPage';
 import LogRegCon from './components/login-register/container';
+import AccountAuth from './components/user info/AccountAuth';
 
 
 function App() {
@@ -17,7 +18,10 @@ function App() {
   const [logRegVisibility, setLogRegVisibility] = React.useState(false);
 
 
+  /* Login and Register page Transitions */
   const [logSwitch, setLogSwitch] = React.useState(false);
+
+  const [isLogin, setIsLogin] = React.useState(true);
 
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
@@ -26,15 +30,15 @@ function App() {
         <LogRegCon setActivePage={setActivePage} setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
         ( 
           <>
-           <NavSection setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
+           <NavSection isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
             <CurrentPage activePage={activePage}/>
-             {menuVisible && <MenuList setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
+             {menuVisible && <MenuList isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
+             {/* <AccountAuth />  */}
       
             <Footer setActivePage={setActivePage}/>
           </>
         ) 
       }
-
       
     </div>
   );
