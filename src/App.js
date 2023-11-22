@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer';
 import CurrentPage from './CurrentPage';
 import LogRegCon from './components/login-register/container';
 import AccountAuth from './components/user info/AccountAuth';
+import IndivPro from './components/Individual Product/IndivPro';
 
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         ( 
           <>
            <NavSection isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
-            <CurrentPage activePage={activePage}/>
+            {/* <CurrentPage activePage={activePage}/> */}
+            <IndivPro />
              {menuVisible && <MenuList isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
              {/* <AccountAuth />  */}
       

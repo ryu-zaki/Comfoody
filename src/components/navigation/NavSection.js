@@ -11,7 +11,7 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
           </div>
         </div>
         
-        <div className='flex gap-6'>
+        <div className='flex gap-6 md:hidden'>
            {
              isLogin ? (
                <div className='w-8 relative cursor-pointer md:hidden'>
@@ -42,6 +42,7 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
           isLogin ? (
             <div className='hidden md:flex gap-8'>
               <div className='w-8 relative cursor-pointer'>
+              <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>1</div>
                 <img className='w-full' src='./assets/cart-icon.png' alt='' /> 
               </div>
     
