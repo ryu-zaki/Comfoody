@@ -6,12 +6,12 @@ import ParallaxSection from './ParallaxSection';
 
 
 
-export default function HomeSection() {
+export default function HomeSection({orderEvent}) {
   return (
     <div >
       <HeroSection/>
       <FeaturesSection />
-      <ProductsPreview />
+      <ProductsPreview orderEvent={orderEvent}/>
       <ParallaxSection />
     </div>
   )

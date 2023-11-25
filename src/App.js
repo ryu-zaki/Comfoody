@@ -10,6 +10,8 @@ import IndivPro from './components/Individual Product/IndivPro';
 
 
 function App() {
+
+  
   
   const [menuVisible, setMenuVisible] = React.useState(false);
 
@@ -24,6 +26,23 @@ function App() {
 
   const [isLogin, setIsLogin] = React.useState(true);
 
+
+  /* Active Individual Product */
+  const [activeInvPro, setActiveInvPro] = React.useState(null);
+  
+  /* User product quantity */
+  const [proQuantity, setProQuantity] = React.useState(1);
+
+
+  const orderEvent = ({target}) => {
+    setActiveInvPro(target.id.toLowerCase());
+    console.log("Hello")
+  }
+
+  /* Add to cart Functionality */
+  const [productsCart, setProductsCart] = React.useState({});
+  const [cartVisible, setCartVisible] = React.useState(true);
+
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
       {
@@ -31,10 +50,16 @@ function App() {
         <LogRegCon setActivePage={setActivePage} setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
         ( 
           <>
-           <NavSection isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
-            {/* <CurrentPage activePage={activePage}/> */}
-            <IndivPro />
-             {menuVisible && <MenuList isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
+           <NavSection setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
+            
+            {
+             
+            }
+
+            {
+              activeInvPro ? <IndivPro setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} /> : <CurrentPage orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
+            }
+             {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
              {/* <AccountAuth />  */}
       
             <Footer setActivePage={setActivePage}/>

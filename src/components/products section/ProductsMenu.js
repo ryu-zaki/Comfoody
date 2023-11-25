@@ -23,16 +23,6 @@ const menu = {
   },
 
   {
-    Title: "Choco Crinkles",
-    ImgSrc: "crinkles.png",
-  },
-
-  {
-    Title: "Choco Brownies",
-    ImgSrc: "choco-brownies.png",
-  },
-
-  {
     Title: "Red Velvet",
     ImgSrc: "red-velvet.png",
   },
@@ -42,8 +32,13 @@ const menu = {
   },
 
   {
-    Title: "Choco Crinkles",
-    ImgSrc: "crinkles.png",
+    Title: "Matcha Oreo",
+    ImgSrc: "matcha-oreo.png",
+  },
+
+  {
+    Title: "Choco Brownies",
+    ImgSrc: "choco-brownies.png",
   },
 
   {

@@ -3,7 +3,9 @@ import IntroProductCard from './IntroProductCard'
 import menu from './ProductsMenu'
 import ProductSecTemplate from './ProductSecTemplate';
 
-export default function ProductsSection() {
+export default function ProductsSection({setActiveInvPro, orderEvent}) {
+
+  
 
   React.useEffect(() => {
     
@@ -38,6 +40,7 @@ export default function ProductsSection() {
                 Price={Price}
                 OldPrice={OldPrice}
                 ImgSrc={ImgSrc}
+                orderEvent={orderEvent}
                 />
   });
 
@@ -47,6 +50,7 @@ export default function ProductsSection() {
                 key={index}
                 Title={Title} 
                 ImgSrc={ImgSrc}
+                orderEvent={orderEvent}
                 
     />
   });

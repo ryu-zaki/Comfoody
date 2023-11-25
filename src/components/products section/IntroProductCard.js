@@ -1,6 +1,9 @@
 import React from 'react'
 
-export default function IntroProductCard({Title, Price, OldPrice, ImgSrc}) {
+export default function IntroProductCard({Title, Price, OldPrice, ImgSrc, orderEvent}) {
+
+  
+
   return (
     <div className='w-1/2 flex justify-center items-center flex-col gap-2'>
       <div className='w-full h-58'>
@@ -17,7 +20,7 @@ export default function IntroProductCard({Title, Price, OldPrice, ImgSrc}) {
         <span className='text-sm'><s>{OldPrice}</s></span>
         <p className='md:text-lg'>{Price}</p>
       </div>
-      <button className='text-white bg-brown w-9/12 p-2 rounded-full mt-3 md:text-xl sm:p-4 '>Order now</button>
+      <button id={Title} onClick={orderEvent} className='text-white bg-brown w-9/12 p-2 rounded-full mt-3 md:text-xl sm:p-4 '>Order now</button>
     </div>
   )
 }

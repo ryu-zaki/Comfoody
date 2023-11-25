@@ -363,7 +363,7 @@ body .order-card.active {
 body .order-card.hover-active {
   transition: all .4s;
   transform: translateY(-.5em);
-  background-color: rgba(254,247,221, .7);
+  /* background-color: rgba(254,247,221, .7); */
 }
 
 

@@ -1,11 +1,12 @@
 import React from 'react'
 
-export default function MenuList({setMenuVisible, setActivePage, setLogRegVisibility, isLogin}) {
+export default function MenuList({setMenuVisible, setActivePage, setLogRegVisibility, isLogin, setActiveInvPro}) {
 
   const navEvent = (e) => {
     setActivePage(e.target.innerText); 
     setMenuVisible(false);
-    console.log("Hello")
+    
+    setActiveInvPro(null);
   }
 
   return (

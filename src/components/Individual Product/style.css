@@ -3,19 +3,19 @@
     --brown: #4E3B34;
 }
 
-body .grid-section > *:nth-child(1) {
+body .grid-section.inv > *:nth-child(1) {
     grid-area: grid1;
 }
 
-body .grid-section > *:nth-child(2) {
+body .grid-section.inv > *:nth-child(2) {
     grid-area: grid2;
 }
 
-body .grid-section > *:nth-child(3) {
+body .grid-section.inv > *:nth-child(3) {
     grid-area: grid3;
 }
 
-body .grid-section {
+body .grid-section.inv {
     display: grid;
     grid-auto-rows: 1fr;
     grid-template-areas: 
@@ -149,7 +149,8 @@ body .pro-review {
 
 
     body .inv-main-img {
-        width: 60em;
+        width: 65em;
+        max-height: 20em;
     }
 
    
@@ -159,6 +160,7 @@ body .pro-review {
 @media (min-width: 1220px) {
  body .inv-main-img {
         width: 30em;
+        min-height: 25em;
     }
     body .inv-main-img ~ section {
         width: 30em;

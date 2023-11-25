@@ -2,7 +2,7 @@ import React from 'react'
 import ProductsCard from './ProductsCard'
 import data from '../../data/BestSellers'
 
-export default function ProductsPreview() {
+export default function ProductsPreview({orderEvent}) {
 
   const bestSellerList = data.map((data, index) => {
   return  <ProductsCard 
@@ -10,6 +10,7 @@ export default function ProductsPreview() {
              path={data.path}
              name={data.productName}
              width={data.width}
+             orderEvent={orderEvent}
           />
   });
 
