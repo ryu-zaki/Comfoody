@@ -37,7 +37,7 @@ export default function ProductsCard({path, name, width, orderEvent}) {
              <img width={width} draggable="false" className='rounded-lg' src={path}   alt='' />
           
             <h3 className='mb-2 text-xl'>{name}</h3>
-          <button id={name} onClick={orderEvent} onMouseOver={(e) => orderHover(e)} onMouseLeave={orderLeave} className='bg-brown w-full p-3 text-white rounded-br-lg rounded-bl-lg'>Order now</button>
+          <button id={name.toLowerCase()} onClick={orderEvent} onMouseOver={(e) => orderHover(e)} onMouseLeave={orderLeave} className='bg-brown w-full p-3 text-white rounded-br-lg rounded-bl-lg'>Order now</button>
         </div>
     
   )

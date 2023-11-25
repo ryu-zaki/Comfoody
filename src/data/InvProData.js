@@ -41,6 +41,13 @@ const data = [
         price: "$10.00",
         imgSrc: "./assets/Products Section/red-velvet.png"
     },
+
+    {
+        proName: "ube cheesecake",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, urna ac eleifend bibendum, libero dolor feugiat elit.",
+        price: "$10.00",
+        imgSrc: "./assets/Products Section/ube-cheesecake.png"
+    },
 ]
 
 export default data;

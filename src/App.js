@@ -7,7 +7,7 @@ import CurrentPage from './CurrentPage';
 import LogRegCon from './components/login-register/container';
 import AccountAuth from './components/user info/AccountAuth';
 import IndivPro from './components/Individual Product/IndivPro';
-
+import CartCard from './components/products cart/cart';
 
 function App() {
 
@@ -36,28 +36,29 @@ function App() {
 
   const orderEvent = ({target}) => {
     setActiveInvPro(target.id.toLowerCase());
-    console.log("Hello")
   }
 
   /* Add to cart Functionality */
-  const [productsCart, setProductsCart] = React.useState({});
-  const [cartVisible, setCartVisible] = React.useState(true);
-
+  const [productsCart, setProductsCart] = React.useState([]);
+  const [cartVisible, setCartVisible] = React.useState(false);
+  console.log(productsCart)
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
+      {
+        cartVisible ? <CartCard setProductsCart={setProductsCart} proQuantity={proQuantity} productsCart={productsCart} setCartVisible={setCartVisible} /> : null
+      }
+
       {
         logRegVisibility ? 
         <LogRegCon setActivePage={setActivePage} setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
         ( 
           <>
-           <NavSection setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
+           <NavSection productsCart={productsCart} setCartVisible={setCartVisible} setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
             
-            {
-             
-            }
+           
 
             {
-              activeInvPro ? <IndivPro setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} /> : <CurrentPage orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
+              activeInvPro ? <IndivPro productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} /> : <CurrentPage orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
             }
              {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
              {/* <AccountAuth />  */}

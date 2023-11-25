@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function NavSection({setMenuVisible, setActivePage, setLogRegVisibility, setLogSwitch, isLogin, setActiveInvPro}) {
+export default function NavSection({setMenuVisible, setActivePage, setLogRegVisibility, setLogSwitch, isLogin, setActiveInvPro, setCartVisible, productsCart}) {
 
   const navEvent = (e) => {
     setActivePage(e.target.innerText); 
@@ -16,11 +16,11 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
           </div>
         </div>
         
-        <div className='flex gap-6 md:hidden'>
+        <div  className='flex gap-6 md:hidden'>
            {
              isLogin ? (
-               <div className='w-8 relative cursor-pointer md:hidden'>
-                <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>1</div>
+               <div onClick={() => setCartVisible(true)} className='w-8 relative cursor-pointer md:hidden'>
+                <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
                  <img className='w-full' src='./assets/cart-icon.png' alt='' /> 
                </div>) :
                null
@@ -46,8 +46,10 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
         {
           isLogin ? (
             <div className='hidden md:flex gap-8'>
-              <div className='w-8 relative cursor-pointer'>
-              <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>1</div>
+              <div onClick={() => setCartVisible(true)} className='w-8 relative cursor-pointer'>
+              {
+                productsCart.length <= 0 ? null : <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
+              }
                 <img className='w-full' src='./assets/cart-icon.png' alt='' /> 
               </div>
     

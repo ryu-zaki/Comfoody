@@ -39,6 +39,7 @@ module.exports = {
       "dark": "#222",
       "tWhite": "#eee",
       "transparent": "rgba(0,0,0,0.0)",
+      "cartOverlay": "rgba(0,0,0,0.7)",
       "textGray": "#666"
     },
     extend: {},

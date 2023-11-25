@@ -7,7 +7,7 @@ import ProReview from './ProReview';
 import InvProData from '../../data/InvProData';
 
 
-export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart}) {
+export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart}) {
 
 
   React.useEffect(() => {
@@ -18,7 +18,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
 
    setProQuantity(1);
 
-  }, [])
+  }, [setProQuantity])
 
  
 
@@ -42,7 +42,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
 
 
   const [proData] = InvProData.filter(({proName}) => {
-    return proName == activeInvPro;
+    return proName === activeInvPro;
   });
 
   const {proName, price, description, imgSrc} = proData;
@@ -79,12 +79,29 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
 
 
   const addToCartEvent = ({target}, quantity) => {
-    setProductsCart((prevState) => (
-      {
-      ...prevState,
-      [target.id]: quantity
-      }
-    ));
+
+    const isSamePro = productsCart.some((product) => {
+      return product.name === target.id;
+    });
+    const msg = document.querySelector('.add-to-cart-msg');
+    msg.classList.add('active');
+    setTimeout(() => {
+      msg.classList.remove('active');
+    }, 2000)
+
+    if (isSamePro) {
+      msg.style.color = "red";
+      msg.innerText = "Already added to your cart.";
+      return;
+    }
+    msg.style.color = "green";
+    msg.innerText = "Added to your cart.";
+
+    
+
+    setProductsCart((prevState) => 
+     ([...prevState, {name: target.id, quantityPro: quantity}])
+  );
   }
 
   return (
@@ -110,9 +127,10 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
             </div>
           </div>
 
-          <div className='flex gap-7 lg:gap-5 xl:mt-6'>
+          <div className='flex gap-7 lg:gap-5 xl:mt-6 relative justify-center lg:justify-start'>
             <button id={titleProduct.toLowerCase()} className='rounded-xl border-solid border-brown border-2 py-2 px-4 font-semibold' onClick={(e) => addToCartEvent(e, proQuantity)}>ADD TO CART</button>
             <button className='rounded-xl border-solid border-brown border-2 py-2 px-4 text-white bg-brown'>BUY NOW</button>
+            <p className='text-md add-to-cart-msg font-bold absolute -bottom-10 '></p>
           </div>
         </section>
       </section>

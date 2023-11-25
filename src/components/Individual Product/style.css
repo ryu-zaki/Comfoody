@@ -144,6 +144,18 @@ body .pro-review {
     }
   }
 
+  .add-to-cart-msg {
+    transform: translateY(-1em);
+    opacity: 0;
+    user-select: none;
+    transition: all .6s;
+  }
+
+  .add-to-cart-msg.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
 @media (min-width: 930px) {
 
 

@@ -1,0 +1,28 @@
+.cart-con .cart-card {
+    min-height: 18em;
+    animation: cartModal .5s forwards;
+    transform: scale(.2);
+    transform-origin: top;
+}
+
+@keyframes cartModal {
+    to {
+        transform: scale(1);
+    }
+    
+}
+
+.cart-con .cart-products-con {
+    min-height: 5em;
+}
+
+.cart-con .cart-products-con > div {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: .7em;
+}
+
+@media (min-width: 400px) {
+    .cart-con .cart-card {
+        width: 23em;
+    }
+}
