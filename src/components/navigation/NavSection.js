@@ -20,7 +20,9 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
            {
              isLogin ? (
                <div onClick={() => setCartVisible(true)} className='w-8 relative cursor-pointer md:hidden'>
-                <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
+                {
+                productsCart.length <= 0 ? null : <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
+              }
                  <img className='w-full' src='./assets/cart-icon.png' alt='' /> 
                </div>) :
                null

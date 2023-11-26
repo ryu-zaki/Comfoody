@@ -26,3 +26,10 @@
         width: 23em;
     }
 }
+
+@media (min-width: 720px) {
+    .cart-con .cart-products-con.max {
+        max-height: 18em;
+    }
+
+}

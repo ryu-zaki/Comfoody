@@ -35,17 +35,21 @@ function App() {
 
 
   const orderEvent = ({target}) => {
-    setActiveInvPro(target.id.toLowerCase());
+    setActivePage("indiv-pro");
+    setActiveInvPro(target.id.toLowerCase())
   }
 
   /* Add to cart Functionality */
   const [productsCart, setProductsCart] = React.useState([]);
   const [cartVisible, setCartVisible] = React.useState(false);
-  console.log(productsCart)
+  
+  /* Buy now */
+  const [buyNowPro, setBuyNowPro] = React.useState({totalProPrice: 0, proName: ""});
+
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
       {
-        cartVisible ? <CartCard setProductsCart={setProductsCart} proQuantity={proQuantity} productsCart={productsCart} setCartVisible={setCartVisible} /> : null
+        cartVisible ? <CartCard setActivePage={setActivePage} setProductsCart={setProductsCart} proQuantity={proQuantity} productsCart={productsCart} setCartVisible={setCartVisible} /> : null
       }
 
       {
@@ -53,13 +57,11 @@ function App() {
         <LogRegCon setActivePage={setActivePage} setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
         ( 
           <>
-           <NavSection productsCart={productsCart} setCartVisible={setCartVisible} setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>
-            
-           
+           <NavSection productsCart={productsCart} setCartVisible={setCartVisible} setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>    
 
-            {
-              activeInvPro ? <IndivPro productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} /> : <CurrentPage orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
-            }
+            
+               <CurrentPage buyNowPro={buyNowPro}  setBuyNowPro={setBuyNowPro} setActivePage={setActivePage} setProductsCart={setProductsCart} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} productsCart={productsCart} orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
+            
              {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
              {/* <AccountAuth />  */}
       

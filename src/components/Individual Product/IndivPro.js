@@ -7,7 +7,7 @@ import ProReview from './ProReview';
 import InvProData from '../../data/InvProData';
 
 
-export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart}) {
+export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setActivePage, setBuyNowPro}) {
 
 
   React.useEffect(() => {
@@ -78,8 +78,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
   })
 
 
-  const addToCartEvent = ({target}, quantity) => {
-
+  const addCartValidation = (target) => {
     const isSamePro = productsCart.some((product) => {
       return product.name === target.id;
     });
@@ -92,16 +91,31 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
     if (isSamePro) {
       msg.style.color = "red";
       msg.innerText = "Already added to your cart.";
-      return;
+      return true
     }
+
+    
     msg.style.color = "green";
     msg.innerText = "Added to your cart.";
+    return false
+  }
 
+  const addToCartEvent = ({target}, quantity) => {
+
+    if (addCartValidation(target)) {
+      return;
+    }
     
 
     setProductsCart((prevState) => 
      ([...prevState, {name: target.id, quantityPro: quantity}])
   );
+  }
+
+  const buyNow = (e) => {
+    setBuyNowPro({proName: e.target.id, totalProPrice: proQuantity * Number(price.slice(1)), quantity: proQuantity});
+    setActivePage("account-auth-buyNow");
+    console.log("hi")
   }
 
   return (
@@ -129,7 +143,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
 
           <div className='flex gap-7 lg:gap-5 xl:mt-6 relative justify-center lg:justify-start'>
             <button id={titleProduct.toLowerCase()} className='rounded-xl border-solid border-brown border-2 py-2 px-4 font-semibold' onClick={(e) => addToCartEvent(e, proQuantity)}>ADD TO CART</button>
-            <button className='rounded-xl border-solid border-brown border-2 py-2 px-4 text-white bg-brown'>BUY NOW</button>
+            <button id={titleProduct.toLowerCase()} onClick={buyNow} className='rounded-xl border-solid border-brown border-2 py-2 px-4 text-white bg-brown'>BUY NOW</button>
             <p className='text-md add-to-cart-msg font-bold absolute -bottom-10 '></p>
           </div>
         </section>

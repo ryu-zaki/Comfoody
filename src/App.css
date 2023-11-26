@@ -695,7 +695,7 @@ html body .products-section .all-products > h2.active {
 
 .summary-section .product {
   border-bottom: 2px solid #222;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
 
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -741,6 +741,7 @@ html body .products-section .all-products > h2.active {
 
     .summary-section .product {
       grid-template-columns: repeat(2, 1fr);
+      align-items: center;
     }
 
 }
@@ -876,7 +877,7 @@ html body .products-section .all-products > h2.active {
   }
 
   .summary-section .product {
-    gap: 4em;
+    gap: 2em;
   }
 
   
