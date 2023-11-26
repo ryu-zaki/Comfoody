@@ -42,11 +42,7 @@ module.exports = {
       "cartOverlay": "rgba(0,0,0,0.7)",
       "textGray": "#666"
     },
-    extend: {
-      boxShadow: {
-        'boxShadow': 'rgba(0, 0, 0, 0.35) 0px 5px 15px;',
-      }
-    },
+    extend: {},
   },
   plugins: [],
 }

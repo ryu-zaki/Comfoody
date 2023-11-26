@@ -1,5 +1,4 @@
 import React from 'react'
-import './style.css';
 import YouMayAlsoLike from './YouMayAlsoLike';
 import data from '../../data/YouMayAlsoLikeData';
 import ReviewData from '../../data/ReviewsData';

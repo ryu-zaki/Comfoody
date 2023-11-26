@@ -1,5 +1,4 @@
 import React from 'react'
-import "./cart.css"
 import ProCartPro from './ProCartPro';
 
 export default function cart({setCartVisible, productsCart, setProductsCart, setActivePage}) {
