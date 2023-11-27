@@ -5,8 +5,6 @@ import MenuList from './components/navigation/MenuList';
 import Footer from './components/footer/Footer';
 import CurrentPage from './CurrentPage';
 import LogRegCon from './components/login-register/container';
-import AccountAuth from './components/user info/AccountAuth';
-import IndivPro from './components/Individual Product/IndivPro';
 import CartCard from './components/products cart/cart';
 
 function App() {
@@ -25,8 +23,7 @@ function App() {
   const [logSwitch, setLogSwitch] = React.useState(false);
 
   const [isLogin, setIsLogin] = React.useState(true);
-
-
+ console.log(setIsLogin)
   /* Active Individual Product */
   const [activeInvPro, setActiveInvPro] = React.useState(null);
   
@@ -60,7 +57,7 @@ function App() {
            <NavSection productsCart={productsCart} setCartVisible={setCartVisible} setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>    
 
             
-               <CurrentPage buyNowPro={buyNowPro}  setBuyNowPro={setBuyNowPro} setActivePage={setActivePage} setProductsCart={setProductsCart} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} productsCart={productsCart} orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
+               <CurrentPage isLogin={isLogin} buyNowPro={buyNowPro}  setBuyNowPro={setBuyNowPro} setActivePage={setActivePage} setProductsCart={setProductsCart} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} productsCart={productsCart} orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
             
              {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
              {/* <AccountAuth />  */}

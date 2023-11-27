@@ -28,6 +28,7 @@ module.exports = {
       'lightBrown': '#8c7851',
       'lowOpacityBrown': 'rgba(78,59,52)',
       'brown': "#4E3B34",
+      'darkBrown': "#362924",
       'orange': '#C64800',
       'bgOrange': 'rgb(254,247,221)',
       "lightGreen": "#D9E1D4",
@@ -44,6 +45,6 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: []
 }
 

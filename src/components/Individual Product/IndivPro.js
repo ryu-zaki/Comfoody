@@ -1,12 +1,12 @@
 import React from 'react'
 import YouMayAlsoLike from './YouMayAlsoLike';
-import data from '../../data/YouMayAlsoLikeData';
+//import data from '../../data/YouMayAlsoLikeData';
 import ReviewData from '../../data/ReviewsData';
 import ProReview from './ProReview';
 import InvProData from '../../data/InvProData';
 
 
-export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setActivePage, setBuyNowPro}) {
+export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setActivePage, setBuyNowPro, isLogin}) {
 
 
   React.useEffect(() => {
@@ -76,22 +76,29 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
 
   })
 
-
+  
   const addCartValidation = (target) => {
     const isSamePro = productsCart.some((product) => {
       return product.name === target.id;
     });
-    const msg = document.querySelector('.add-to-cart-msg');
+  const msg = document.querySelector('.add-to-cart-msg');
+    
     msg.classList.add('active');
     setTimeout(() => {
       msg.classList.remove('active');
     }, 2000)
 
+    if (!isLogin) {
+      msg.style.color = "red";
+      msg.innerText = "You must log in first.";
+      return true;
+    } 
+
     if (isSamePro) {
       msg.style.color = "red";
       msg.innerText = "Already added to your cart.";
       return true
-    }
+    } 
 
     
     msg.style.color = "green";
@@ -104,7 +111,6 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
     if (addCartValidation(target)) {
       return;
     }
-    
 
     setProductsCart((prevState) => 
      ([...prevState, {name: target.id, quantityPro: quantity}])
@@ -112,6 +118,20 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
   }
 
   const buyNow = (e) => {
+    const msg = document.querySelector('.add-to-cart-msg');
+
+    if (!isLogin) {
+      msg.classList.add('active');
+      msg.style.color = "red";
+      msg.innerText = "You must log in first.";
+
+      setTimeout(() => {
+        msg.classList.remove('active');
+      }, 2000)
+      return;
+    } 
+    
+
     setBuyNowPro({proName: e.target.id, totalProPrice: proQuantity * Number(price.slice(1)), quantity: proQuantity});
     setActivePage("account-auth-buyNow");
     console.log("hi")
@@ -190,9 +210,9 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
             <button className='p-3 self-center px-6 rounded-full bg-brown text-white sm:self-start'>Add Comment</button>
             
             <div class="container-loading opacity-0">
-              <div class="cube"><div class="cube__inner"></div></div>
-              <div class="cube"><div class="cube__inner"></div></div>
-              <div class="cube"><div class="cube__inner"></div></div>
+              <div className="cube"><div className="cube__inner"></div></div>
+              <div className="cube"><div className="cube__inner"></div></div>
+              <div className="cube"><div className="cube__inner"></div></div>
             </div>
           </div>
             

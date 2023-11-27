@@ -5,7 +5,7 @@ import IndivProData from '../../data/InvProData';
 export default function SummaryPro({total, name, quantityPro, setTotal}) {
   
     const [{imgSrc, price}] = IndivProData.filter(({proName}) => {
-        return name == proName
+        return name === proName
     });
 
     

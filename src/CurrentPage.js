@@ -5,7 +5,7 @@ import ProductsSection from './components/products section/ProductsSection';
 import AccountAuth from './components/user info/AccountAuth';
 import IndivPro from './components/Individual Product/IndivPro';
 
-export default function CurrentPage({activePage, setActiveInvPro, orderEvent, productsCart, setProductsCart, proQuantity, setProQuantity, activeInvPro, setActivePage, buyNowPro, setBuyNowPro}) {
+export default function CurrentPage({activePage, setActiveInvPro, orderEvent, productsCart, setProductsCart, proQuantity, setProQuantity, activeInvPro, setActivePage, buyNowPro, setBuyNowPro, isLogin}) {
 
     let currentPage; 
   switch(activePage.toLowerCase()) {
@@ -36,7 +36,7 @@ export default function CurrentPage({activePage, setActiveInvPro, orderEvent, pr
      break;
 
     case "indiv-pro":
-      currentPage = <IndivPro setActivePage={setActivePage} productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} setBuyNowPro={setBuyNowPro}/>
+      currentPage = <IndivPro isLogin={isLogin} setActivePage={setActivePage} productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} setBuyNowPro={setBuyNowPro}/>
     break;
 
 
