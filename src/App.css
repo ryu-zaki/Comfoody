@@ -134,7 +134,8 @@ body .hero-section {
 }
 
 .menuList-con .userInfo-mobile {
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  width: 80%;
 }
 
 

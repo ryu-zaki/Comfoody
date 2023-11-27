@@ -10,13 +10,13 @@ export default function MenuList({setMenuVisible, setActivePage, setLogRegVisibi
   }
 
   return (
-    <div className='menuList-con fixed top-0 bottom-0 w-10/12 bg-darkBrown flex justify-between items-start flex-col z-20 pt-20 pb-10 overflow-hidden'>
+    <div className='menuList-con fixed top-0 bottom-0 w-10/12 bg-darkBrown flex justify-between items-start flex-col z-20 pt-24 pb-10'>
            
      
     <img onClick={() => setMenuVisible(false)} className='absolute top-3 right-3 cursor-pointer' alt='' src='./assets/cross-icon.png'/>
 
     
-    <div className='flex items-center gap-5 ml-8 flex-wrap'>
+    <div className='flex items-center gap-5 ml-3 flex-wrap userInfo-mobile pb-10'>
       <div className='bg-white p-2 rounded-full border-2 border-yellow border-solid'>
         <img src='./assets/user-icon.png' alt=''/>
       </div>
@@ -26,7 +26,7 @@ export default function MenuList({setMenuVisible, setActivePage, setLogRegVisibi
       </div>
     </div>
 
-      <ul className='flex flex-col gap-12 pt-24 text-xl items-start text-tWhite z-20 ml-8 userInfo-mobile w-9/12'>
+      <ul className='flex flex-col gap-12 text-xl items-start text-tWhite z-20 ml-8'>
         <li onClick={navEvent} className='cursor-pointer relative flex items-center gap-2'>
           <img width={30} src='./assets/home-icon.png' alt=''/><p>Home</p>
         </li>
