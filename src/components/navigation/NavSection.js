@@ -23,7 +23,7 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
                 {
                 productsCart.length <= 0 ? null : <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
               }
-                 <img className='w-full' src='./assets/cart-icon.png' alt='' /> 
+                 <img className='w-full' draggable="false" src='./assets/cart-icon.png' alt='' /> 
                </div>) :
                null
            }
@@ -52,11 +52,11 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
               {
                 productsCart.length <= 0 ? null : <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
               }
-                <img className='w-full' src='./assets/cart-icon.png' alt='' /> 
+                <img className='w-full' draggable="false" src='./assets/cart-icon.png' alt='' /> 
               </div>
     
               <div className='w-8 cursor-pointer'>
-                <img className='w-full' src='./assets/user-icon.png' alt='' /> 
+                <img className='w-full' draggable="false" src='./assets/user-icon.png' alt='' /> 
               </div>
            </div>
           ) :

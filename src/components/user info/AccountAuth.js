@@ -33,8 +33,7 @@ export default function AccountAuth({productsCart, buyNowPro}) {
     const {proName, quantity} = buyNowPro;
     productsList = <SummaryPro name={proName} quantityPro={quantity}/>;
   }
-
-  console.log(buyNowPro)
+  
   return (
     <div className='account-auth-section container text-brown flex flex-col gap-16 w-11/12 mx-auto mt-10 sm:w-full xl:flex-row xl:gap-10 xl:mx-16 xl:w-auto 2xl:mx-24 2xl:gap-16'>
       <section className='flex flex-col gap-12 sm:gap-24 2xl:gap-16'>

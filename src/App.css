@@ -1161,6 +1161,10 @@ body .pro-review {
   opacity: 1;
 }
 
+.cart-con .cart-products-con.max {
+  max-height: 18em;
+}
+
 @media (min-width: 930px) {
 
 
@@ -1215,11 +1219,4 @@ body .inv-main-img {
   .cart-con .cart-card {
       width: 23em;
   }
-}
-
-@media (min-width: 720px) {
-  .cart-con .cart-products-con.max {
-      max-height: 18em;
-  }
-
 }

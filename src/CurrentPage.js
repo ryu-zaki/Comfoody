@@ -22,7 +22,13 @@ export default function CurrentPage({activePage, setActiveInvPro, orderEvent, pr
     break;
 
     case "account-auth": 
-    currentPage = <AccountAuth productsCart={productsCart}/>;
+    if (productsCart.length <= 0) {
+      currentPage = <HomeSection orderEvent={orderEvent}/>;
+    } 
+    else {
+      currentPage = <AccountAuth productsCart={productsCart}/>;
+
+    }
     break;
 
     case "account-auth-buynow": 
