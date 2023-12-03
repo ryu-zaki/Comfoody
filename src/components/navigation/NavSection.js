@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink, Route } from 'react-router-dom';
 
 export default function NavSection({setMenuVisible, setActivePage, setLogRegVisibility, setLogSwitch, isLogin, setActiveInvPro, setCartVisible, productsCart}) {
 
@@ -37,12 +38,11 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
        
         
         <div className='hidden md:block'>
-
-          <ul className='menu-list flex gap-8 items-center'>
-             <li onClick={navEvent} className='cursor-pointer relative'>Home</li>
-             <li onClick={navEvent} className='cursor-pointer relative'>Contacts</li>
-             <li onClick={navEvent} className='cursor-pointer relative'>Products</li>
-          </ul>
+          <nav className='menu-list flex gap-8 items-center relative'>
+             <NavLink className='cursor-pointer relative' to={"home"}>Home</NavLink>
+             <NavLink className='cursor-pointer relative' to={"contacts"}>Contacts</NavLink>
+             <NavLink className='cursor-pointer relative' to={"products"}>Products</NavLink>
+          </nav>
         </div>
 
         {

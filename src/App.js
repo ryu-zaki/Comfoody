@@ -6,14 +6,16 @@ import Footer from './components/footer/Footer';
 import CurrentPage from './CurrentPage';
 import LogRegCon from './components/login-register/container';
 import CartCard from './components/products cart/cart';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 function App() {
 
   
-  
+  const navigate = useNavigate();
   const [menuVisible, setMenuVisible] = React.useState(false);
 
-  const [activePage, setActivePage] = React.useState("home");
+  /* const [activePage, setActivePage] = React.useState("home"); */
 
   /* Login & Register System page Visibility*/
   const [logRegVisibility, setLogRegVisibility] = React.useState(false);
@@ -32,8 +34,9 @@ function App() {
 
 
   const orderEvent = ({target}) => {
-    setActivePage("indiv-pro");
-    setActiveInvPro(target.id.toLowerCase())
+    const pageText = target.id.toLowerCase();
+    setActiveInvPro(pageText);
+    navigate(`/products/${pageText}`);
   }
 
   /* Add to cart Functionality */
@@ -46,23 +49,22 @@ function App() {
   return (
     <div className='main-wrapper pb-0 flex flex-col gap-0 md:px-10 xl:px-0 xl:gap-0 xl:pb-0'>
       {
-        cartVisible ? <CartCard setActivePage={setActivePage} setProductsCart={setProductsCart} proQuantity={proQuantity} productsCart={productsCart} setCartVisible={setCartVisible} /> : null
+        cartVisible ? <CartCard  navigate={navigate} setProductsCart={setProductsCart} proQuantity={proQuantity} productsCart={productsCart} setCartVisible={setCartVisible} /> : null
       }
 
       {
         logRegVisibility ? 
-        <LogRegCon setActivePage={setActivePage} setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
+        <LogRegCon setLogRegVisibility={setLogRegVisibility} setLogSwitch={setLogSwitch} logSwitch={logSwitch}/> :
         ( 
           <>
-           <NavSection productsCart={productsCart} setCartVisible={setCartVisible} setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>    
+           <NavSection productsCart={productsCart} setCartVisible={setCartVisible} setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setMenuVisible={setMenuVisible} setLogSwitch={setLogSwitch}/>    
 
+               <CurrentPage navigate={navigate}  isLogin={isLogin} buyNowPro={buyNowPro}  setBuyNowPro={setBuyNowPro}  setProductsCart={setProductsCart} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} productsCart={productsCart} orderEvent={orderEvent}  setActiveInvPro={setActiveInvPro}/>
             
-               <CurrentPage isLogin={isLogin} buyNowPro={buyNowPro}  setBuyNowPro={setBuyNowPro} setActivePage={setActivePage} setProductsCart={setProductsCart} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} productsCart={productsCart} orderEvent={orderEvent} activePage={activePage} setActiveInvPro={setActiveInvPro}/>
-            
-             {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setActivePage={setActivePage} setMenuVisible={setMenuVisible}/>}
+             {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setMenuVisible={setMenuVisible}/>}
              {/* <AccountAuth />  */}
       
-            <Footer setActivePage={setActivePage}/>
+            <Footer/>
           </>
         ) 
       }

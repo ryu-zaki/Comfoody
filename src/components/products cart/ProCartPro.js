@@ -1,13 +1,18 @@
 import React from 'react'
 import productsData from '../../data/InvProData';
 
-export default function ProCartPro({name, quantityPro, setProductsCart}) {
+export default function ProCartPro({navigate, productsCart, name, quantityPro, setProductsCart}) {
 
   const [{proName, price, imgSrc}] = productsData.filter(({proName}) => {
     return proName === name;
   })
 
   const removeProduct = ({target}) => {
+
+    if (productsCart.length <= 1) {
+      navigate('/home');
+    }
+
     setProductsCart((prevState) => {
         const filterArr = prevState.filter(({name}) => {
             return name !== target.id

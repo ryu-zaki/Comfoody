@@ -4,11 +4,14 @@ import AboutUsSection from './components/about us page/AboutUsSection';
 import ProductsSection from './components/products section/ProductsSection';
 import AccountAuth from './components/user info/AccountAuth';
 import IndivPro from './components/Individual Product/IndivPro';
+import { Route, Routes } from 'react-router-dom';
 
-export default function CurrentPage({activePage, setActiveInvPro, orderEvent, productsCart, setProductsCart, proQuantity, setProQuantity, activeInvPro, setActivePage, buyNowPro, setBuyNowPro, isLogin}) {
+export default function CurrentPage({navigate, setActiveInvPro, orderEvent, productsCart, setProductsCart, proQuantity, setProQuantity, activeInvPro,  buyNowPro, setBuyNowPro, isLogin}) {
+
+  
 
     let currentPage; 
-  switch(activePage.toLowerCase()) {
+  switch("") {
     case "home": 
       currentPage = <HomeSection orderEvent={orderEvent}/>;
     break;
@@ -36,7 +39,7 @@ export default function CurrentPage({activePage, setActiveInvPro, orderEvent, pr
      break;
 
     case "indiv-pro":
-      currentPage = <IndivPro isLogin={isLogin} setActivePage={setActivePage} productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} setBuyNowPro={setBuyNowPro}/>
+      currentPage = <IndivPro isLogin={isLogin} productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} setBuyNowPro={setBuyNowPro}/>
     break;
 
 
@@ -45,9 +48,22 @@ export default function CurrentPage({activePage, setActiveInvPro, orderEvent, pr
 
   }
 
+  
   return (
-    <>
-    {currentPage}
-    </>
+   <Routes>
+    <Route path={'/home'} element={<HomeSection orderEvent={orderEvent}/>}/>
+    <Route path={'/'} element={<HomeSection orderEvent={orderEvent}/>}/>
+    
+    <Route path={'/contacts'} element={<AboutUsSection />}/>
+
+    <Route path={'/products'} element={<ProductsSection activeInvPro={activeInvPro} setActiveInvPro={setActiveInvPro} orderEvent={orderEvent}/>} />
+
+    <Route path={`/products/${activeInvPro}`} element={<IndivPro navigate={navigate} setActiveInvPro={setActiveInvPro} isLogin={isLogin} productsCart={productsCart} setProductsCart={setProductsCart} orderEvent={orderEvent} proQuantity={proQuantity} setProQuantity={setProQuantity} activeInvPro={activeInvPro} setBuyNowPro={setBuyNowPro}/>}/>
+
+    {/* Checkout */}
+    <Route path={'/account-auth'} element={<AccountAuth productsCart={productsCart}/>}/>
+    <Route path={'/account-auth-buynow'} element={<AccountAuth productsCart={productsCart} buyNowPro={buyNowPro}/>}/>
+    
+   </Routes>
   )
 }

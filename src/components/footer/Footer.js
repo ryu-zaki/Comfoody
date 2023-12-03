@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom' 
 
 export default function Footer({setActivePage}) {
   return (
@@ -10,11 +11,11 @@ export default function Footer({setActivePage}) {
         <li><img width="30" src='./assets/tiktok-white.png' alt=''/></li>
        </ul>
 
-       <ul className='flex gap-5 xl:gap-10'>
-        <li><a href="/" onClick={(e) => {setActivePage(e.target.innerText)}}>Home</a></li>
-        <li><a href="/" onClick={(e) => {setActivePage(e.target.innerText)}}>Contacts</a></li>
-        <li><a href="/" onClick={(e) => {setActivePage(e.target.innerText)}} >Products</a></li>
-       </ul>
+       <nav className='flex gap-5 xl:gap-10'>
+        <Link to={'home'}>Home</Link>
+        <Link to={'contacts'}>Contacts</Link>
+        <Link to={'products'}>Products</Link>
+       </nav>
       {/*  <p>Comfoody</p> */}
        <p className='w-full text-center xl:w-fit'>&copy;2023 | All Rights Reserved</p>
     </footer>

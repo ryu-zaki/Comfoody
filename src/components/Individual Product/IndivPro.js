@@ -6,7 +6,7 @@ import ProReview from './ProReview';
 import InvProData from '../../data/InvProData';
 
 
-export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setActivePage, setBuyNowPro, isLogin}) {
+export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setBuyNowPro, isLogin, navigate, setActiveInvPro}) {
 
 
   React.useEffect(() => {
@@ -16,7 +16,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
    });
 
    setProQuantity(1);
-
+   
   }, [setProQuantity])
 
  
@@ -52,12 +52,6 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
   titleArr[1][0].toUpperCase() + titleArr[1].slice(1) : 
   titleArr[0][0].toUpperCase() + titleArr[0].slice(1);
 
-
- /*  for (let i = 0; i < InvProData.length; i++) {
-    if (InvProData[i].name == activeInvPro) {
-      proData.push(InvProData[i]);
-    }
-  } */
 
   const filterProduct = InvProData.filter(({proName}, index) => {
     return titleProduct.toLowerCase() !== proName;
@@ -131,10 +125,8 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
       return;
     } 
     
-
+    navigate('/account-auth-buynow');
     setBuyNowPro({proName: e.target.id, totalProPrice: proQuantity * Number(price.slice(1)), quantity: proQuantity});
-    setActivePage("account-auth-buyNow");
-    console.log("hi")
   }
 
   return (
@@ -185,13 +177,13 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
       {/* Grid Section */}
       <section className='grid-section inv gap-2 md:w-10/12 lg:w-9/12 xl:w-7/12'>
         <div>
-          <img draggable="false" className='w-full' src='./assets/Individual Section/grid1.jpeg' alt=''/>
+          <img draggable="false" className='w-full' src='../assets/Individual Section/grid1.jpeg' alt=''/>
         </div>
         <div>
-          <img draggable="false" className='w-full' src='./assets/Individual Section/grid2.png' alt=''/>
+          <img draggable="false" className='w-full' src='../assets/Individual Section/grid2.png' alt=''/>
         </div>
         <div>
-          <img draggable="false" className='w-full h-full' src='./assets/Individual Section/grid3.png' alt=''/>
+          <img draggable="false" className='w-full h-full' src='../assets/Individual Section/grid3.png' alt=''/>
         </div>
       </section>
       

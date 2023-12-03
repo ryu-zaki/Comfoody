@@ -8,14 +8,14 @@ export default function ProReview({username, date, comment, stars}) {
     }
 
     const starReviewsList = starsList.map(() => {
-        return <img draggable="false" alt='' width={15} src='./assets/Products Section/star-fill.png'/>
+        return <img draggable="false" alt='' width={15} src='../assets/Products Section/star-fill.png'/>
     })
 
   return (
     <div className='flex flex-col gap-2 pro-review rounded-lg'>
            <div className="flex justify-between text-dark">
             <div className="flex gap-2">
-              <img src="./assets/user-icon.png" alt=""/>
+              <img src="../assets/user-icon.png" alt=""/>
               <p className="font-semibold">{username}</p>
             </div>
             <p className='text-sm'>{date}</p>

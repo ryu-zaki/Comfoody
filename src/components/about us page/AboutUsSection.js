@@ -2,6 +2,14 @@ import React from 'react'
 import ContactsCard from './ContactsCard'
 export default function AboutUsSection() {
 
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+ 
+  }, [])
+
   return (
     <div className='about-us-section flex flex-col gap-16 my-20 m xl:mt-16'>
       

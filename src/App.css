@@ -130,7 +130,11 @@ body .hero-section {
     opacity: 1;
     transform: translateY(0em);
   }
-  
+}
+
+
+body .nav-con > a.active::before {
+   transform: scaleX(1);
 }
 
 .menuList-con .userInfo-mobile {
@@ -139,7 +143,7 @@ body .hero-section {
 }
 
 
-.menuList-con ul li {
+.menuList-con ul li { 
   transform: translateY(-.8em);
   opacity: 0;
   animation: menuItems 1s forwards;
@@ -764,7 +768,7 @@ html body .products-section .all-products > h2.active {
     right: -17em;
   }
 
-  .menu-list > li::before {
+  .menu-list > a::before {
     content: '';
     background-color: var(--brown);
 
@@ -779,7 +783,8 @@ html body .products-section .all-products > h2.active {
 
   }
 
-  .menu-list > li:hover::before {
+  .menu-list > a:hover::before, 
+  .menu-list > a.active::before{
     transform: scaleX(1);
   }
 
