@@ -1220,3 +1220,21 @@ body .inv-main-img {
       width: 23em;
   }
 }
+
+@media (min-width: 720px) {
+  .page-not-found {
+     min-height: 70vh;
+  }
+}
+
+@media (min-width: 1220px) {
+
+  .page-not-found h1 {
+    font-size: 10em;
+  }
+
+  .page-not-found {
+    min-height: 80vh;
+    margin-bottom: 2em;
+  }
+}

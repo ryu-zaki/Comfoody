@@ -1,11 +1,16 @@
 import React from 'react'
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Link, Route } from 'react-router-dom';
 
 export default function NavSection({setMenuVisible, setActivePage, setLogRegVisibility, setLogSwitch, isLogin, setActiveInvPro, setCartVisible, productsCart}) {
 
   const navEvent = (e) => {
     setActivePage(e.target.innerText); 
     setActiveInvPro(null);
+  }
+
+  const logRegEvent = () => {
+    localStorage.removeItem('logRegMark');
+    setLogRegVisibility(true); 
   }
 
   return (
@@ -63,10 +68,10 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
 
           (
             <div className='hidden md:block'>
-              <ul className='flex gap-8 items-center'>
-                 <li onClick={() => {setLogRegVisibility(true); setLogSwitch(false)}} className='cursor-pointer login-btn'>Login</li>
-                 <li onClick={() => {setLogRegVisibility(true); setLogSwitch(true)}} className='cursor-pointer rounded-full relative p-2 py-1 startBtn'>Register</li>
-              </ul>
+              <nav className='flex gap-8 items-center'>
+                 <Link to={'login'} onClick={() => {logRegEvent(); setLogSwitch(false)}} className='cursor-pointer login-btn'>Login</Link>
+                 <Link to={'login'}  onClick={() => {logRegEvent(); setLogSwitch(true)}} className='cursor-pointer rounded-full relative p-2 py-1 startBtn'>Register</Link>
+              </nav>
             </div>
           )
         }

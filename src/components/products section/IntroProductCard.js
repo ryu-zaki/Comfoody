@@ -2,8 +2,6 @@ import React from 'react'
 
 export default function IntroProductCard({Title, Price, OldPrice, ImgSrc, orderEvent}) {
 
-  
-
   return (
     <div className='w-1/2 flex justify-center items-center flex-col gap-2'>
       <div className='w-full h-58'>
