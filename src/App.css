@@ -1229,9 +1229,7 @@ body .inv-main-img {
 
 @media (min-width: 1220px) {
 
-  .page-not-found h1 {
-    font-size: 10em;
-  }
+  
 
   .page-not-found {
     min-height: 80vh;
