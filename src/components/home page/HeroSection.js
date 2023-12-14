@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function HeroSection() {
 
- 
+  const navigate = useNavigate();
 
   return (
     <div className='hero-section relative overflow-hidden p-5 pb-0 sm:p-7 md:p-10 xl:px-24 xl:overflow-visible '>
@@ -16,7 +17,7 @@ export default function HeroSection() {
         <div className="mt-7 hero-text-section relative flex flex-col gap-4 items-center w-full md:items-start  lg:w-11/12 xl:w-4/5 xl:mt-0">
           <h1 className='main-text text-center overflow-hidden text-5xl font-semibold sm:text-7xl md:text-left md:text-7xl xl:text-8xl'><p>From Our</p> <p>Oven to Your</p> <p>Heart.</p></h1>
           <p className='text-black mt-3 text-xl xl:text-2xl'>Elevate Your <span className='relative z-10 text-brown ml-4'>Taste Experience!</span></p>
-          <button className='startBtn bg-white z-20 relative mt-7 p-3 rounded-full px-6 ml-1 xl:text-xl'>Explore menu</button>
+          <button onClick={() => navigate('/products')} className='startBtn bg-white z-20 relative mt-7 p-3 rounded-full px-6 ml-1 xl:text-xl'>Explore menu</button>
         </div>
 
         <div className='cookie-bg hidden absolute top-0 right-0 -z-10 md:block md:-top-20 lg:z-10'>
