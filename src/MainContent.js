@@ -1,8 +1,12 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom';
 import NavSection from './components/navigation/NavSection'
-import MenuList from './components/navigation/MenuList';
 import Footer from './components/footer/Footer';
-import CurrentPage from './CurrentPage';
+import HomeSection from './components/home page/HomeSection';
+import AboutUsSection from './components/about us page/AboutUsSection';
+import ProductsSection from './components/products section/ProductsSection';
+
+
 const MainContent = ({productsCart, setCartVisible,
                       setActiveInvPro, isLogin,
                       setLogRegVisibility, setLogSwitch, 
@@ -14,9 +18,7 @@ const MainContent = ({productsCart, setCartVisible,
  const logRegMarkChecker = localStorage.getItem('logRegMark');
   return (
     <>
-    {
-        logRegMarkChecker
-        && <NavSection 
+   <NavSection 
         productsCart={productsCart} 
         setCartVisible={setCartVisible} 
         setActiveInvPro={setActiveInvPro} 
@@ -24,32 +26,22 @@ const MainContent = ({productsCart, setCartVisible,
         setLogRegVisibility={setLogRegVisibility} 
         setMenuVisible={setMenuVisible} 
         setLogSwitch={setLogSwitch}/>
-    }
           
-      <CurrentPage 
-        navigate={navigate}  
-        isLogin={isLogin} 
-        buyNowPro={buyNowPro}  
-        setBuyNowPro={setBuyNowPro}  
-        setProductsCart={setProductsCart} 
-        proQuantity={proQuantity} 
-        setProQuantity={setProQuantity} 
-        activeInvPro={activeInvPro} 
-        productsCart={productsCart} 
-        orderEvent={orderEvent}  
-        setActiveInvPro={setActiveInvPro}
-        logSwitch={logSwitch}
-        setLogRegVisibility={setLogRegVisibility}
-        setLogSwitch={setLogSwitch}
-        
-        />
+      <Routes>
+        <Route path={'home'} element={<HomeSection orderEvent={orderEvent}/>}/>
+        <Route path={'/'} element={<HomeSection orderEvent={orderEvent}/>}/>
+        <Route path={'contacts'} element={<AboutUsSection />}/>
+        <Route path={'products'} 
+               element={<ProductsSection 
+                          activeInvPro={activeInvPro} 
+                          setActiveInvPro={setActiveInvPro} 
+                          orderEvent={orderEvent}/>}/>
+      </Routes>
 
        {menuVisible && <MenuList setActiveInvPro={setActiveInvPro} isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setMenuVisible={setMenuVisible}/>}
        {/* <AccountAuth />  */}
 
-      {
-        logRegMarkChecker && <Footer />
-      } 
+       <Footer />
     </>
   )
 }

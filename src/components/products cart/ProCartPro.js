@@ -1,16 +1,23 @@
 import React from 'react'
 import productsData from '../../data/InvProData';
+import deleteSrc from './imgs/delete-icon.png';
+import { useLocation } from 'react-router-dom';
 
 export default function ProCartPro({navigate, productsCart, name, quantityPro, setProductsCart}) {
 
+  const {pathname} = useLocation();
+
+  
   const [{proName, price, imgSrc}] = productsData.filter(({proName}) => {
     return proName === name;
   })
 
   const removeProduct = ({target}) => {
 
-    if (productsCart.length <= 1) {
-      navigate('/home');
+    if (productsCart.length <= 1 && 
+       (pathname ===  '/account-auth-buynow' || 
+       pathname === '/account-auth')) {
+      navigate('/');
     }
 
     setProductsCart((prevState) => {
@@ -34,9 +41,7 @@ export default function ProCartPro({navigate, productsCart, name, quantityPro, s
             <p>{price}<span className='ml-2 font-bold'>x{quantityPro}</span></p>              
           </div>
         </div>
-          
-        
-        <img onClick={removeProduct} id={name} className='cursor-pointer' src='./assets/Cart Section/delete-icon.png' alt=''/>
+        <img onClick={removeProduct} id={name} className='cursor-pointer' src={deleteSrc} alt=''/>
        
     </div>
   )

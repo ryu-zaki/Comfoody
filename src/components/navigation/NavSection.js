@@ -1,24 +1,18 @@
 import React from 'react'
 import { NavLink, Link, Route } from 'react-router-dom';
+import imgCart from './imgs/cart-icon.png';
 
-export default function NavSection({setMenuVisible, setActivePage, setLogRegVisibility, setLogSwitch, isLogin, setActiveInvPro, setCartVisible, productsCart}) {
+import userSrc from './imgs/user-icon.png';
+import hatSrc from './imgs/icons8-chef-hat-50.png';
 
-  const navEvent = (e) => {
-    setActivePage(e.target.innerText); 
-    setActiveInvPro(null);
-  }
-
-  const logRegEvent = () => {
-    localStorage.removeItem('logRegMark');
-    setLogRegVisibility(true); 
-  }
+export default function NavSection({setMenuVisible, isLogin, setCartVisible, productsCart}) {
 
   return (
-    <header className='text-brown flex justify-between items-center z-20 p-5 py-7 pb-0 sm:p-7  md:p-10 xl:px-24'>
+    <header className='relative  text-brown flex justify-between items-center z-20 p-5 py-7 pb-0 sm:p-7  md:p-10 xl:px-24'>
         <div className='flex items-center gap-2'>
           <p className='text-2xl'>Comfoody</p>
           <div className='w-8'>
-           <img draggable='false' src='./assets/icons8-chef-hat-100.png'  alt='' width="full"/>  
+           <img draggable='false' src={hatSrc}  alt='' width="full"/>  
           </div>
         </div>
         
@@ -29,7 +23,7 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
                 {
                 productsCart.length <= 0 ? null : <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
               }
-                 <img className='w-full' draggable="false" src='./assets/cart-icon.png' alt='' /> 
+                 <img className='w-full' draggable="false" src={imgCart} alt='' /> 
                </div>) :
                null
            }
@@ -44,9 +38,9 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
         
         <div className='hidden md:block'>
           <nav className='menu-list flex gap-8 items-center relative'>
-             <NavLink className='cursor-pointer relative' to={"home"}>Home</NavLink>
-             <NavLink className='cursor-pointer relative' to={"contacts"}>Contacts</NavLink>
-             <NavLink className='cursor-pointer relative' to={"products"}>Products</NavLink>
+             <NavLink className='cursor-pointer relative' to={"/"}>Home</NavLink>
+             <NavLink className='cursor-pointer relative' to={"/contacts"}>Contacts</NavLink>
+             <NavLink className='cursor-pointer relative' to={"/products"}>Products</NavLink>
           </nav>
         </div>
 
@@ -57,11 +51,11 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
               {
                 productsCart.length <= 0 ? null : <div className='bg-yellow text-sm font-bold flex justify-center items-center rounded-full absolute w-7 -right-4 -top-2'>{productsCart.length}</div>
               }
-                <img className='w-full' draggable="false" src='./assets/cart-icon.png' alt='' /> 
+                <img className='w-full' draggable="false" src={imgCart} alt='' /> 
               </div>
     
               <div className='w-8 cursor-pointer'>
-                <img className='w-full' draggable="false" src='./assets/user-icon.png' alt='' /> 
+                <img className='w-full' draggable="false" src={userSrc} alt='' /> 
               </div>
            </div>
           ) :
@@ -69,8 +63,8 @@ export default function NavSection({setMenuVisible, setActivePage, setLogRegVisi
           (
             <div className='hidden md:block'>
               <nav className='flex gap-8 items-center'>
-                 <Link to={'login'} onClick={() => {logRegEvent(); setLogSwitch(false)}} className='cursor-pointer login-btn'>Login</Link>
-                 <Link to={'login'}  onClick={() => {logRegEvent(); setLogSwitch(true)}} className='cursor-pointer rounded-full relative p-2 py-1 startBtn'>Register</Link>
+                 <NavLink to={'/login'} className='cursor-pointer login-btn'>Login</NavLink>
+                 <NavLink to={'/register'} className='cursor-pointer rounded-full relative p-2 py-1 startBtn'>Register</NavLink>
               </nav>
             </div>
           )

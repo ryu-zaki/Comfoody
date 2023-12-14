@@ -4,10 +4,16 @@ import YouMayAlsoLike from './YouMayAlsoLike';
 import ReviewData from '../../data/ReviewsData';
 import ProReview from './ProReview';
 import InvProData from '../../data/InvProData';
+import NavSection from '../navigation/NavSection';
+import Footer from '../footer/Footer';
+import { useParams } from 'react-router-dom';
+import PageNotFound from '../404 page/PageNotFound';
+
+export default function IndivPro({proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setBuyNowPro, isLogin, navigate, setMenuVisible, setCartVisible}) {
+ const {productName} = useParams();
 
 
-export default function IndivPro({activeInvPro, proQuantity, setProQuantity, orderEvent, setProductsCart, productsCart, setBuyNowPro, isLogin, navigate, setActiveInvPro}) {
-
+ let msg = document.querySelector('.add-to-cart-msg');
 
   React.useEffect(() => {
    window.scrollTo({
@@ -16,8 +22,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
    });
 
    setProQuantity(1);
-   
-  }, [setProQuantity])
+  }, [])
 
  
 
@@ -38,11 +43,13 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
     })
   }
 
-
-
-  const [proData] = InvProData.filter(({proName}) => {
-    return proName === activeInvPro;
+  let [proData] = InvProData.filter(({proName}) => {
+    return proName === productName;
   });
+
+  if (proData === undefined) {
+    proData = {proName: "false", price: "", description: "", imgSrc: ""}
+  } 
 
   const {proName, price, description, imgSrc} = proData;
 
@@ -61,7 +68,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
   });
 
   const usersLikeList = limitProductNum.map(({proName, price, imgSrc}, index) => {
-    return <YouMayAlsoLike setProQuantity={setProQuantity} orderEvent={orderEvent} proName={proName} price={price} imgSrc={imgSrc} key={index} 
+    return <YouMayAlsoLike msg={msg} setProQuantity={setProQuantity} orderEvent={orderEvent} proName={proName} price={price} imgSrc={imgSrc} key={index} 
     />
   });
 
@@ -75,8 +82,8 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
     const isSamePro = productsCart.some((product) => {
       return product.name === target.id;
     });
-  const msg = document.querySelector('.add-to-cart-msg');
     
+    msg = document.querySelector('.add-to-cart-msg');
     msg.classList.add('active');
     setTimeout(() => {
       msg.classList.remove('active');
@@ -112,8 +119,7 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
   }
 
   const buyNow = (e) => {
-    const msg = document.querySelector('.add-to-cart-msg');
-
+    msg = document.querySelector('.add-to-cart-msg');
     if (!isLogin) {
       msg.classList.add('active');
       msg.style.color = "red";
@@ -130,6 +136,11 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
   }
 
   return (
+    <>
+      {
+        !(proName === "false") ? (
+          <>
+    <NavSection setMenuVisible={setMenuVisible} isLogin={isLogin} setCartVisible={setCartVisible} productsCart={productsCart}/>
     <div className="mt-9 flex flex-col gap-20 mx-3 mb-10 sm:mx-10 md:mx-0 md:items-center lg:gap-24 xl:gap-32">
       <section className='flex flex-col items-center w-10/12 mx-auto gap-10 lg:flex-row xl:justify-center xl:gap-14'>
         {/* Main Product Picture */}
@@ -212,5 +223,11 @@ export default function IndivPro({activeInvPro, proQuantity, setProQuantity, ord
          </div>
         </section>
     </div>
+    <Footer />
+   </>
+        ) : <PageNotFound />
+      }
+    </>
+    
   )
 }

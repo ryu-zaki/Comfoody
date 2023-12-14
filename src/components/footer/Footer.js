@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
 
-export default function Footer({setActivePage}) {
+export default function Footer() {
   return (
     <footer className='bg-brown h-48 flex flex-col items-center justify-center gap-3 text-white xl:h-52 xl:gap-7 xl:flex-row xl:justify-around'>
         
@@ -12,9 +12,9 @@ export default function Footer({setActivePage}) {
        </ul>
 
        <nav className='flex gap-5 xl:gap-10'>
-        <Link to={'home'}>Home</Link>
-        <Link to={'contacts'}>Contacts</Link>
-        <Link to={'products'}>Products</Link>
+        <Link to={'/'}>Home</Link>
+        <Link to={'/contacts'}>Contacts</Link>
+        <Link to={'/products'}>Products</Link>
        </nav>
       {/*  <p>Comfoody</p> */}
        <p className='w-full text-center xl:w-fit'>&copy;2023 | All Rights Reserved</p>

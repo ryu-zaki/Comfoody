@@ -3,6 +3,8 @@ import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import ProductsPreview from './ProductsPreview';
 import ParallaxSection from './ParallaxSection';
+import NavSection from '../navigation/NavSection';
+import Footer from '../footer/Footer';
 
 
 
@@ -18,10 +20,10 @@ export default function HomeSection({orderEvent}) {
 
   return (
     <div >
-      <HeroSection/>
-      <FeaturesSection />
-      <ProductsPreview orderEvent={orderEvent}/>
-      <ParallaxSection />
+        <HeroSection/>
+        <FeaturesSection />
+        <ProductsPreview orderEvent={orderEvent}/>
+        <ParallaxSection />
     </div>
   )
 }

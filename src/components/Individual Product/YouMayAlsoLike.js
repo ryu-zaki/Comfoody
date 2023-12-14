@@ -1,8 +1,13 @@
 import React from 'react'
 
-export default function YouMayAlsoLike({proName, imgSrc, price, orderEvent, setProQuantity}) {
+export default function YouMayAlsoLike({msg, proName, imgSrc, price, orderEvent, setProQuantity}) {
 
   const orderEventYouMay = (e) => {
+    if (!!msg) {
+      msg.classList.remove('active');
+    }
+    
+
     orderEvent(e);
     window.scrollTo({
       top: 0,

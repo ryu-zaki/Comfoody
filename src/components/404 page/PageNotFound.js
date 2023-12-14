@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import img from './imgs/pageNotFound.png';
 
 export default function PageNotFound() {
   const navigate = useNavigate();
 
-    
   return (
     <div className='page-not-found relative flex flex-col justify-center items-center gap-9 my-10 mx-5 md:w-full md:my-0 md:items-start md:mx-0 xl:pl-40'>
       {/* Text Section */}
@@ -16,7 +15,7 @@ export default function PageNotFound() {
         <button onClick={() => navigate('/')} className="mt-5 border-2 border-black border-solid p-3 px-4 rounded-md md:text-xl">Back to home</button>
       </section>
 
-      <img className="hidden md:block absolute -right-36 xl:right-32" draggable="false" src={`./assets/404 Page/pageNotFound.png`} alt=""/>
+      <img className="hidden md:block absolute -right-36 xl:right-32" draggable="false" src={img} alt=""/>
      
 
     </div>

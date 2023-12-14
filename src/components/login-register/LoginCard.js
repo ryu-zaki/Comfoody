@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LoginCard({setLogSwitch, showPass}) {
+export default function LoginCard({setLogSwitch, showPass, navigate}) {
 
   return (
     <div className='flex flex-col gap-8 h-full justify-center items-center login'>
@@ -28,7 +28,7 @@ export default function LoginCard({setLogSwitch, showPass}) {
 
            <div className='flex items-center gap-5'>
            <button className='text-sm uppercase bg-brown text-white p-2 px-10 rounded-md'>Sign in</button>
-           <button onClick={() => setLogSwitch(true)} className='text-sm uppercase bg-white text-brown text- p-2 px-8 rounded-md "border-solid border-2 border-brown lg:hidden'>Register</button>
+           <button onClick={() => navigate('/register')} className='text-sm uppercase bg-white text-brown text- p-2 px-8 rounded-md "border-solid border-2 border-brown lg:hidden'>Register</button>
            </div>
            <p className='text-textGray cursor-pointer'>Forget your Password ?</p>
 

@@ -137,6 +137,10 @@ body .nav-con > a.active::before {
    transform: scaleX(1);
 }
 
+body .menuList-con {
+  width: 85%; 
+}
+
 .menuList-con .userInfo-mobile {
   border-bottom: 1px solid #ddd;
   width: 80%;
@@ -723,6 +727,10 @@ html body .products-section .all-products > h2.active {
     --allProWidth: 11em;
     --allProHeight: 11em;
   }
+
+  body .menuList-con {
+    width: 20em; 
+  }
 }
 
 @media (min-width: 480px) {
@@ -768,27 +776,26 @@ html body .products-section .all-products > h2.active {
     right: -17em;
   }
 
-  .menu-list > a::before {
-    content: '';
-    background-color: var(--brown);
-
-    position: absolute;
-    bottom: -.1em;
-    left: 0;
-    width: 100%;
-    height: 1.5px;
+  .menu-list > a.active:hover::before {
     transform: scaleX(0);
-    transform-origin: left;
+  }
+
+  .menu-list > a {
+    padding: .4em 1em;
     transition: all .3s;
-
+    border-radius: 4em;
   }
 
-  .menu-list > a:hover::before, 
-  .menu-list > a.active::before{
-    transform: scaleX(1);
+  .menu-list > a:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
   }
 
-  
+  .menu-list > a.active {
+    background-color: #FFD28F;
+    /* color: white; */
+
+  }
 
 }
 

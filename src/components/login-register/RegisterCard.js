@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function RegisterCard({setLogSwitch, showPass}) {
+
+export default function RegisterCard({setLogSwitch, showPass, navigate}) {
   return (
     <div className='flex flex-col gap-8 h-full justify-center items-center register'>
            <h2 className='text-4xl font-bold'>Register</h2>
@@ -34,7 +35,7 @@ export default function RegisterCard({setLogSwitch, showPass}) {
            </div>
 
            <div className='flex items-center gap-5'>
-           <button onClick={() => setLogSwitch(false)} className='text-sm uppercase bg-white text-brown p-2 px-8 rounded-md border-solid border-2 border-brown lg:hidden'>Sign in</button>
+           <button onClick={() => navigate('/login')} className='text-sm uppercase bg-white text-brown p-2 px-8 rounded-md border-solid border-2 border-brown lg:hidden'>Sign in</button>
            <button className='text-sm uppercase bg-brown text-white p-2 px-8 rounded-md'>Register</button>
            </div>
 

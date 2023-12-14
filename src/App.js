@@ -1,9 +1,17 @@
 import './App.css';
 import React from 'react';
-
 import CartCard from './components/products cart/cart';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import MainContent from './MainContent';
+import { useNavigate, Routes, Route } from 'react-router-dom';
+import HomeSection from './components/home page/HomeSection';
+import AboutUsSection from './components/about us page/AboutUsSection';
+import ProductsSection from './components/products section/ProductsSection';
+import Footer from './components/footer/Footer';
+import LoginCard from './components/login-register/container';
+import PageNotFound from './components/404 page/PageNotFound';
+import NavSection from './components/navigation/NavSection';
+import IndivPro from './components/Individual Product/IndivPro';
+import AccountAuth from './components/user info/AccountAuth';
+import MenuList from './components/navigation/MenuList';
 
 
 function App() {
@@ -13,30 +21,19 @@ function App() {
   /* Login & Register System page Visibility*/
   const [logRegVisibility, setLogRegVisibility] = React.useState(false);
 
-
   /* Login and Register page Transitions */
   const [logSwitch, setLogSwitch] = React.useState(false);
-
   const [isLogin, setIsLogin] = React.useState(false);
- 
-  /* Active Individual Product */
-  const [activeInvPro, setActiveInvPro] = React.useState(null);
   
   /* User product quantity */
   const [proQuantity, setProQuantity] = React.useState(1);
-
-
   const orderEvent = ({target}) => {
     const pageText = target.id.toLowerCase();
-    setActiveInvPro(pageText);
     navigate(`/products/${pageText}`);
   }
 
-  
   const [productsCart, setProductsCart] = React.useState([]);
   const [cartVisible, setCartVisible] = React.useState(false);
-  
-  
   const [buyNowPro, setBuyNowPro] = React.useState({totalProPrice: 0, proName: ""});
 
   return (
@@ -50,31 +47,76 @@ function App() {
                         setCartVisible={setCartVisible} /> : null
       }
 
-      <MainContent 
-          productsCart={productsCart} 
-          setCartVisible={setCartVisible} 
-          setActiveInvPro={setActiveInvPro} 
-          isLogin={isLogin} 
-          setLogRegVisibility={setLogRegVisibility} 
-          setMenuVisible={setMenuVisible} 
-          setLogSwitch={setLogSwitch} 
-          navigate={navigate} 
-          buyNowPro={buyNowPro}
-          setBuyNowPro={setBuyNowPro}
-          setProductsCart={setProductsCart}
-          proQuantity={proQuantity}
-          setProQuantity={setProQuantity}
-          activeInvPro={activeInvPro}
-          orderEvent={orderEvent}
-          menuVisible={menuVisible}
-          logRegVisibility={logRegVisibility}    
-          logSwitch={logSwitch}
-          
+      <Routes>
+          <Route path='/' element={
+          <>
+            <NavSection setMenuVisible={setMenuVisible} isLogin={isLogin} setCartVisible={setCartVisible}   productsCart={productsCart}/>
+            <HomeSection orderEvent={orderEvent}/>
+            <Footer />
+          </>}/>
 
-      />
-          
-      
-      
+          {/* Contacts Section */}
+          <Route path={'/contacts'} element={
+          <>
+            <NavSection setMenuVisible={setMenuVisible} isLogin={isLogin} setCartVisible={setCartVisible} productsCart={productsCart}/>
+             <AboutUsSection />
+            <Footer />
+          </>
+          }/>
+
+          <Route path={'/products'} >
+            <Route index element={
+              <>
+                <NavSection setMenuVisible={setMenuVisible} isLogin={isLogin} setCartVisible={setCartVisible} productsCart={productsCart}/>
+                  <ProductsSection orderEvent={orderEvent}/>
+                  <Footer />
+              </>
+            }/> 
+
+            <Route path=":productName" element={<IndivPro 
+                                     navigate={navigate} 
+                                     isLogin={isLogin} 
+                                     setMenuVisible={setMenuVisible}
+                                     setCartVisible={setCartVisible}
+                                     productsCart={productsCart} 
+                                     setProductsCart={setProductsCart}
+                                     orderEvent={orderEvent} 
+                                     proQuantity={proQuantity} 
+                                     setProQuantity={setProQuantity}  
+                                     setBuyNowPro={setBuyNowPro}/>}/>
+           </Route>
+
+        {/* Checkout */}
+        <Route path={'/account-auth'} element={<>
+          <NavSection setMenuVisible={setMenuVisible} isLogin={isLogin} setCartVisible={setCartVisible} productsCart={productsCart}/>
+            <AccountAuth productsCart={productsCart}/>
+          <Footer />
+        </>}/>
+        <Route path={'/account-auth-buynow'} element={<>
+          <NavSection setMenuVisible={setMenuVisible} isLogin={isLogin} setCartVisible={setCartVisible} productsCart={productsCart}/>
+           <AccountAuth productsCart={productsCart} buyNowPro={buyNowPro}/>
+          <Footer />
+        </>}/>
+         
+
+        {/* Login and Register Section */}
+        <Route path='/login' 
+               element={<LoginCard 
+                            setLogRegVisibility={setLogRegVisibility}
+                            setLogSwitch={setLogSwitch}
+                            logSwitch={logSwitch}/>}/>
+        <Route path='/register' 
+               element={<LoginCard 
+                            setLogRegVisibility={setLogRegVisibility}
+                            setLogSwitch={setLogSwitch}
+                            logSwitch={logSwitch}/>}/>
+
+        {/* Page not Found Route */}
+        <Route path='*' element={<PageNotFound />}/>
+      </Routes>
+
+      {/* Menu Tab for Mobile Devices */}
+      {menuVisible && <MenuList isLogin={isLogin} setLogRegVisibility={setLogRegVisibility} setMenuVisible={setMenuVisible}/>}
     </div>
   );
 }

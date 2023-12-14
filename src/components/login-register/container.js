@@ -1,12 +1,12 @@
 import React from 'react'
 import LoginCard from './LoginCard'
 import RegisterCard from './RegisterCard';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-export default function Container({setLogRegVisibility, setLogSwitch, logSwitch}) {
+export default function Container({setLogRegVisibility}) {
 
-  
-
+  const {pathname} = useLocation();
+  const navigate = useNavigate();
   const showPass = (e) => {
     
     const inputEl = e.target.nextElementSibling;
@@ -27,13 +27,13 @@ export default function Container({setLogRegVisibility, setLogSwitch, logSwitch}
 
   }
 
-  const logRegMenuNav = ({target}) => {
+  const logRegMenuNav = () => {
     setLogRegVisibility(false);
     localStorage.setItem("logRegMark", true);
   }
 
   return (
-    <div className={`logreg-con h-screen flex justify-center items-center ${logSwitch ? "switch" : ""}`}>
+    <div className={`logreg-con h-screen flex justify-center items-center ${pathname.slice(1) === "register" ? "switch" : ""}`}>
        <div class="custom-shape-divider-bottom-1700143696">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
@@ -44,7 +44,7 @@ export default function Container({setLogRegVisibility, setLogSwitch, logSwitch}
 
 <div className='absolute navigation-con top-2 z-50 flex flex-col items-center gap-3 xl:left-5 xl:top-auto'>
   <nav className='flex gap-6 navigation p-4 px-6 bg-white rounded-xl xl:flex-col xl:gap-10 xl:py-9'>
-    <Link to={'/home'}  onClick={logRegMenuNav} id="home" className='relative flex justify-center items-center'><img id="home" alt='' className='cursor-pointer xl:w-10' width="30" src='./assets/Login Section/home-icon.png'/></Link>
+    <Link to={'/'}  onClick={logRegMenuNav} id="home" className='relative flex justify-center items-center'><img id="home" alt='' className='cursor-pointer xl:w-10' width="30" src='./assets/Login Section/home-icon.png'/></Link>
 
     <Link to={'/products'} id="products" onClick={logRegMenuNav} className='relative flex justify-center items-center'><img id="products" alt='' className='cursor-pointer xl:w-10' width="30" src='./assets/Login Section/box-icon.png'/></Link>
 
@@ -56,19 +56,19 @@ export default function Container({setLogRegVisibility, setLogSwitch, logSwitch}
       
       <div className='logreg-card w-11/12 bg-white rounded-lg flex overflow-hidden relative'>
         
-        <LoginCard showPass={showPass} setLogSwitch={setLogSwitch}/>
-        <RegisterCard showPass={showPass}  setLogSwitch={setLogSwitch}/>
+        <LoginCard showPass={showPass} navigate={navigate} />
+        <RegisterCard showPass={showPass} navigate={navigate} />
         <div className='bg-brown w-1/2 h-full absolute z-30 brown-section hidden lg:block overflow-hidden'>
         <div className='w-full h-full text-white absolute sign-in-text z-30 hidden lg:flex flex-col items-center justify-center left-0 px-10'>
           <h1 className='text-4xl font-bold'>Welcome Back!</h1>
           <p className='text-center mt-3'>Enter your personal details to use all our features</p>
-          <button onClick={() => setLogSwitch(false)} className='text-sm uppercase text-white p-2 px-8 rounded-md border-solid border-2 border-white mt-7 hover:bg-white hover:text-brown hover:font-semibold'>Sign in</button>
+          <button onClick={() => navigate("/login")} className='text-sm uppercase text-white p-2 px-8 rounded-md border-solid border-2 border-white mt-7 hover:bg-white hover:text-brown hover:font-semibold'>Sign in</button>
         </div>
 
         <div className='w-full h-full text-white absolute register-text z-30 hidden lg:flex flex-col items-center justify-center right-0  px-10'>
         <h1 className='text-4xl font-bold'>Join us!</h1>
           <p className='text-center mt-3'>Register your personal details to use all our features</p>
-          <button onClick={() => setLogSwitch(true)} className='text-sm uppercase text-white p-2 px-8 rounded-md border-solid border-2 border-white mt-7 hover:bg-white hover:text-brown hover:font-semibold'>Register</button>
+          <button onClick={() => navigate("/register")} className='text-sm uppercase text-white p-2 px-8 rounded-md border-solid border-2 border-white mt-7 hover:bg-white hover:text-brown hover:font-semibold'>Register</button>
         </div>
 
         </div>
