@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Confirmation</title>
+</head>
+<body>
+    <div style="width: 30em; font-family: Arial, Helvetica, sans-serif;color: #333;padding: 1.7em; border: 2px solid #999; border-radius: 1em;font-size: 1.1em;">
+        <div style="text-align: center;margin-bottom: 2em;">
+          <h1 style="font-weight: 200; font-size: 2.5em;">Thank you for your order!</h1>
+          <p style="padding-inline: 1em;font-size: 1em;">Recent order placed on <b><%= date %></b>.</p>
+        </div>
+        <div style="border-top: 2px solid #999;border-bottom: 2px solid #999; padding-block: 1em;">
+            <h2 style="font-size: 1.5em;">Order Details:</h2>
+    <ul style="line-height: 1.6;">
+      <li style="margin-bottom: .3em;"><strong>Date of Purchase:</strong> <%= date %></li>
+      <li style="margin-bottom: .3em;"><strong>Shipping Address:</strong> <%= address %>  <%= city %>, <%= zip %></li>
+      <li style="margin-bottom: .3em;"><strong>Payment Method:</strong> Cash on Delivery</li>
+      <li style="margin-bottom: .3em;"><strong>Shipping fee:</strong> <%= shippingFee %></li>
+      <li style="margin-bottom: .3em;">
+        <strong>Items Purchased:</strong>
+        <ul>
+            <% for(let i = 0; i < products.length; i++) { %>
+              <li style="margin-bottom: .3em;"><%= products[i].name %> - Quantity: <%= products[i].quantityPro %> - Price: ₱<%= products[i].price.toFixed(2) %></li>
+           <% } %>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Total Amount:</strong> ₱<%= grandTotal.toFixed(2)%></p>
+        </div>
+
+        <div style="line-height: 1.6;">
+            <h2 style="font-size: 1.5em;">Contact Us:</h2>
+            <p>If you have any questions or need further assistance, feel free to contact us at  <%= gmailUser %>.</p>
+  
+            <p>Thank you for choosing Comfoody. We appreciate your business!</p>
+          </div>
+        <p style="text-align: center; color: #555;font-size: 1em;">comfoody &copy; 2023</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+has ws://localhost:1200 components
+
+ReviewsProvider
+UpOrdersProvider
+EditProducts
+IndivPro
+StocksProvider	
+
+
+
+Mongodb user: 
+
+username: jhonwellespanola4
+pasword: q2GKDmHS7rR4ufsq
