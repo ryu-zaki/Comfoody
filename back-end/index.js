@@ -211,7 +211,7 @@ const accountChecker = async (email, password, req) => {
 
 
 
-app.use(express.static(path.join(__dirname, '..', 'front-end')));
+app.use(express.static(path.join(__dirname, 'front-end')));
 app.use(cors(corsObj));
 
 const getAllUsers = async () => {
@@ -294,7 +294,7 @@ app.get("/get-notifs", (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'front-end', 'index.html'));
+  res.sendFile(path.join(__dirname, 'front-end', 'index.html'));
 })
 
 /* registerAccount */
