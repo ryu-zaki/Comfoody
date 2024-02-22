@@ -18,7 +18,7 @@ const cors = require('cors');
 const multer = require('multer');
 app.use(express.json()); // Parse JSON-encoded bodies
 app.use(express.urlencoded({ extended: true }));
-const uri = "mongodb+srv://jhonwellespanola4:q2GKDmHS7rR4ufsq@cluster0.lpjj5hu.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI;
 const dbName = "sampledb";
 const client = new MongoClient(uri, {
   serverApi: {
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
   },
   /* main-page/public/assets/Products Section */
   destination: (req, file, cb) => {
-    cb(null, 'main-page/public/assets/Products Section/');
+    cb(null, 'front-end/assets/Products Section/');
   }
 });
 
@@ -300,13 +300,14 @@ app.get('*', (req, res) => {
 /* registerAccount */
 
 //API for Account Register
-app.post('/check-register-acc', (req, res) => {
+app.post("/check-register-acc", (req, res) => {
   
   const {email, password} = req.body;
   emailChecker(email, password, req)
     .then(data => res.json({isValid: data}))
     .catch(console.dir);
 })
+
 
 app.post('/add-register-acc', (req, res) => {
   registerAccount(req.body)
@@ -721,7 +722,7 @@ app.post('/delete-pro-stocks', (req, res) => {
   const filePath = req.body.imgSrc.split('/');
   const fileName = filePath[filePath.length - 1];
 
-  fs.unlink(path.join(__dirname, 'main-page', 'public', 'assets', 'Products Section', fileName), (err) => {
+  fs.unlink(path.join(__dirname, 'front-end', 'assets', 'Products Section', fileName), (err) => {
    
       deleteProStocks(req.body.index)
       .then(() => {
@@ -762,8 +763,8 @@ const addNewStock = async (newProduct) => {
 const renameOperation = (req) => {
   const newFileName = req.body.proName.split(' ').join('-').toLowerCase() + path.extname(req.file.filename);
 
-  fs.renameSync(path.join(__dirname, 'main-page', 'public', 'assets', 'Products Section', req.file.filename), 
-  path.join(__dirname, 'main-page', 'public', 'assets', 'Products Section', newFileName))
+  fs.renameSync(path.join(__dirname, 'front-end', 'assets', 'Products Section', req.file.filename), 
+  path.join(__dirname, 'front-end', 'assets', 'Products Section', newFileName))
 }
 
 app.post('/add-stocks-photo', upload.single('file'), (req, res) => {
@@ -797,8 +798,8 @@ app.post('/rename-stocks-photo', (req, res) => {
   const newName = req.body.newName.split(' ').join('-').toLowerCase() + '.png';
   const origName = req.body.origName.split(' ').join('-').toLowerCase() + '.png';
 
-  const origFile = path.join(__dirname, 'main-page', 'public', 'assets', 'Products Section', origName);
-  const newFile = path.join(__dirname, 'main-page', 'public', 'assets', 'Products Section', newName);
+  const origFile = path.join(__dirname, 'front-end', 'assets', 'Products Section', origName);
+  const newFile = path.join(__dirname, 'front-end', 'assets', 'Products Section', newName);
 
   fs.renameSync(origFile, newFile)
 
@@ -809,7 +810,7 @@ app.post('/delete-previous-photo', (req, res) => {
   const {previousProName} =  req.body;
 
   const previousName = previousProName.split(' ').join('-').toLowerCase() + '.png';
-  const previousFile = path.join(__dirname, 'main-page', 'public', 'assets', 'Products Section', previousName);
+  const previousFile = path.join(__dirname, 'front-end', 'assets', 'Products Section', previousName);
 
   fs.unlinkSync(previousFile);
   res.send("picture deleted");
@@ -910,7 +911,11 @@ app.post('/email-verfication', (req, res) => {
 
   console.log(otpCode);
   res.statusCode = 200;
-  
+
+  res.json({otp: otpCode})
+
+
+  return;
   emailSender(otpCode, req.body.userEmail)
     .then(() =>  {res.json({otp: otpCode}); console.log("sent")});
  ;
