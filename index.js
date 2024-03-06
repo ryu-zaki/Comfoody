@@ -18,9 +18,8 @@ const cors = require('cors');
 const multer = require('multer');
 app.use(express.json()); // Parse JSON-encoded bodies
 app.use(express.urlencoded({ extended: true }));
-const uri = process.env.MONGO_URI;
 const dbName = "sampledb";
-const client = new MongoClient(uri, {
+const client = new MongoClient(process.env.MONGO_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -33,7 +32,7 @@ const storage = multer.diskStorage({
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
     cb(null, uniqueSuffix + path.extname(file.originalname))
   },
-  /* main-page/public/assets/Products Section */
+ 
   destination: (req, file, cb) => {
     cb(null, 'front-end/assets/Products Section/');
   }
@@ -91,6 +90,63 @@ const deleteWebSocket = async (data) => {
 
 }
 
+const addReply = async (data) => {
+
+  const db = client.db(dbName);
+  const collection = db.collection('reviews');
+
+  const allData = await collection.find({}).toArray();
+
+  let review;
+  const proNameFil = [...allData].filter(reviewData => {
+    return reviewData.proName === data.replyData.proName;
+  });
+
+  
+  for (let i = 0; i < proNameFil.length; i++) {
+
+    if (i === data.index) {
+      review = proNameFil[i]
+    }
+
+  }
+
+  await collection.updateOne({_id: review._id}, {$push: { replies:  data.replyData}})
+  
+}
+
+const deleteReply = async (data) => {
+  const {outerIndex, innerIndex, productName} = data;
+
+  const db = client.db(dbName);
+  const collection = db.collection('reviews');
+  const allData = await collection.find({}).toArray();
+
+  
+  let review;
+  const arr = allData.filter(data => data.proName === productName);
+
+  for (let i = 0; i < arr.length; i++) {
+
+    if (outerIndex === i) {
+      review = {...arr[i]};
+      let reps = [];
+      for (let j = 0; j < review.replies.length; j++) {
+        
+        if (innerIndex !== j) {
+          reps.push(review.replies[j])
+        }
+      }
+
+      review.replies = reps;
+
+    }
+  }
+  
+  await collection.replaceOne({_id: review._id}, review);
+
+  /* await collection.updateOne({_id: new ObjectId(_id)}, {$set: {replies: newReplies}}); */
+}
 
 ws_server.on('connection', connection => {
   const id = uuid();
@@ -105,7 +161,11 @@ ws_server.on('connection', connection => {
       storeWebSoket(data)
     } else if (!!data.individualComment) {
       deleteWebSocket(data.individualComment)
-    } 
+    } else if (data.hasOwnProperty('isReply')) {
+      addReply(data);
+    } else if (data.hasOwnProperty('deleteReply')) {
+      deleteReply(data);
+    }
     
   })
 })
@@ -300,14 +360,13 @@ app.get('*', (req, res) => {
 /* registerAccount */
 
 //API for Account Register
-app.post("/check-register-acc", (req, res) => {
+app.post('/check-register-acc', (req, res) => {
   
   const {email, password} = req.body;
   emailChecker(email, password, req)
     .then(data => res.json({isValid: data}))
     .catch(console.dir);
 })
-
 
 app.post('/add-register-acc', (req, res) => {
   registerAccount(req.body)
@@ -398,8 +457,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: 'jhonwellespanola4@gmail.com',
-    pass: 'froi qzrd djmj mwuz',
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
   },
 });
 
@@ -416,7 +475,7 @@ const emailSender = async (otp, receiver) => {
     html: renderedEmail
   });
 
-  return
+  return;
 }
 
 
@@ -574,10 +633,6 @@ const emailOrderConfirmation = async (receiver, order, info) => {
   const {grandTotal, date, products} = order;
   const {address, zip, city} = info;
 
-  const listProducts = JSON.parse(products).map(({name, quantityPro, price}) => {
-    return `<li>${name} - Quantity: ${quantityPro} - Price: ₱${price.toFixed(2)}</li>`
-  });
-
   const purchaseMessage = fs.readFileSync(path.join(__dirname, 'purchase_email.ejs'), 'utf-8');
 
   const data = {
@@ -586,7 +641,7 @@ const emailOrderConfirmation = async (receiver, order, info) => {
     address,
     zip,
     city,
-    products: JSON.parse(products),
+    products: products,
     gmailUser: process.env.GMAIL_USER,
     shippingFee: '₱50.00'
   }
@@ -606,7 +661,7 @@ app.put('/store-upcoming-orders', (req, res) => {
 
  storeUpcomingOrders(email, data)
    .then(() => {
-   //emailOrderConfirmation(email, data, personalInfo)
+   emailOrderConfirmation(email, data, personalInfo)
     res.json({msg: true});
    })
    .catch(console.log)
@@ -642,7 +697,6 @@ const cancelOrder = async (email, upOrders) => {
 app.post('/cancel-order', (req, res) => {
   const {email, order} = req.body;
    
-  console.log(email, order);
   /* return */
   cancelOrder(email, order).
   then(() => res.send("success"));
@@ -654,7 +708,7 @@ const reviewsGetter = async () => {
     const db = client.db(dbName);
     const collection = db.collection('reviews');
 
-    const result = await collection.find({},{ projection: { _id: 0 }}).toArray();
+    const result = await collection.find({}).toArray();
 
     return result;
 }
@@ -718,14 +772,36 @@ const deleteProStocks = async (index) => {
      await collection.deleteOne({index: index})
 }
 
+const deleteCartPro = async (index) => {
+  const db = client.db(dbName);
+  const collection = db.collection('users');
+
+  const allUsers = await collection.find({}).toArray();
+
+  for (let i = 0; i < allUsers.length; i++) {
+
+    let filtered = [];
+    for (let j = 0; j < allUsers[i].cartProducts.length; j++) {
+      if (allUsers[i].cartProducts[j].proIndex !== index) {
+        filtered.push(allUsers[i].cartProducts[j]);
+      } 
+    }
+
+    await collection.updateOne({email: allUsers[i].email}, {$set: {cartProducts: filtered}})
+
+  }
+}
+
+
 app.post('/delete-pro-stocks', (req, res) => {
   const filePath = req.body.imgSrc.split('/');
   const fileName = filePath[filePath.length - 1];
 
   fs.unlink(path.join(__dirname, 'front-end', 'assets', 'Products Section', fileName), (err) => {
-   
-      deleteProStocks(req.body.index)
+    const index = req.body.index;
+      deleteProStocks(index)
       .then(() => {
+      deleteCartPro(index)
       res.json({confirmation: true})
     })
     
@@ -909,15 +985,10 @@ app.post('/update-order-status', (req, res) => {
 app.post('/email-verfication', (req, res) => {
   const otpCode = otpGenerator.generate(5, { upperCaseAlphabets: false, specialChars: false });
 
-  console.log(otpCode);
   res.statusCode = 200;
-
-  res.json({otp: otpCode})
-
-
-  return;
+  
   emailSender(otpCode, req.body.userEmail)
-    .then(() =>  {res.json({otp: otpCode}); console.log("sent")});
+    .then(() =>  {res.json({otp: otpCode})});
  ;
 })
 
@@ -970,6 +1041,43 @@ const clearNotifs = () => {
 
 app.delete('/clear-notifs', () => {
   clearNotifs()
+})
+
+const changeReviewProName = async (oldProName, newProName) => {
+
+  const db = client.db(dbName);
+  const reviews = db.collection('reviews');
+
+  await reviews.updateMany({proName: oldProName}, {$set: {proName: newProName}});
+
+  const allReviews = await reviews.find({}).toArray();
+
+  for (let i = 0; i < allReviews.length; i++) {
+ 
+    if (allReviews[i].proName === newProName) {
+      
+      let replies = []
+
+      for (let j = 0; j < allReviews[i].replies.length; j++) {
+       replies.push({...(allReviews[i].replies[i]), proName: newProName})
+      }
+
+
+      await reviews.updateOne({proName: newProName}, {$set: {replies}})
+    }
+
+  }
+
+
+
+}
+
+app.post('/change-review-proName', (req, res) => {
+
+  const {oldProName, newProName} = req.body;
+
+
+  changeReviewProName(oldProName, newProName)
 })
 
 server.listen(PORT, () => console.log("server is running on PORT 1200"));
